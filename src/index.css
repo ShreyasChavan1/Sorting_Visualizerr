@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Serif", serif;
+  /* height: 100%;  */
+}
+
+#root{
+  min-height: 100vh;
+  /* display: flex; */
+  animation: fade-in 1.5s;
+}
+/* @keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100;
+  }
+} */

@@ -1,0 +1,106 @@
+
+.sidebar {
+  width: 250px;
+  /* min-height: 92.3vh; */
+  background-color: #343a40;
+  color: white;
+  display: flex;
+  flex-direction: column; 
+  padding: 20px 10px;
+  box-sizing: border-box;
+  margin-top: 50px;
+  left: 0;
+  overflow-y: auto;
+  z-index: 10;
+  position: fixed; 
+  top: 0; 
+  height: 100vh 
+}
+
+
+.sidebar .home {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+.sidebar .home:hover {
+  background-color: #495057;
+}
+.sidebar .home p{
+  font-weight: 600;
+  margin: 0px 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.sidebar img {
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+
+.sidebar .sorts {
+  margin-bottom: 15px;
+}
+.sidebar .sorts .Second{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+}
+.sidebar .sorts .Second p{
+  font-weight: 600;
+  margin: 0px 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.sidebar .sorts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar .sorts ul li {
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.sidebar .sorts ul li:hover {
+  background-color: #495057;
+}
+
+
+.sidebar .logarithmic, 
+.sidebar .quadratic, 
+.sidebar .weird {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #aaa;
+  font-size: 15px;
+}
+
+
+.sidebar .sorts ul li:hover {
+  background-color: #6c757d;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}

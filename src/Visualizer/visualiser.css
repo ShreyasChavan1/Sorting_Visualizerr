@@ -1,0 +1,62 @@
+.bg{
+    background-image: url(../assets/sort1.jpg);
+    background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;    
+}
+.graphs{
+    display: flex;
+    justify-content: center;
+    transform: rotate(180deg);
+    /* background:linear-gradient(
+        to bottom,
+        rgb(0, 0, 0), 
+        rgba(0, 0, 0, 0)    
+      );  */
+    min-height: 90vh;  
+    transform: rotateX(180deg);
+    
+}
+.graph {
+    transition: height 0.3s ease, background-color 0.2s ease; 
+    background-color: #19ddeb;
+    margin: 0.5px;
+    display: "inline-block";
+    margin-bottom: 50px;
+    border-radius: 10px;
+  }
+
+  .graph.default {
+    background-color: cyan;
+  }
+  
+  .graph.red {
+    background-color: red;
+  }
+.divider{
+    margin: 0px 0px;
+    height: 5px;
+    background-color: #19ddeb56;
+}
+.controls{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.slider_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+    align-items: center;
+}
+.slider_div span{
+    font-weight: bold;
+    font-size: 15px;
+    color: blanchedalmond;
+}
+.slider{
+    width: 200px;
+}
