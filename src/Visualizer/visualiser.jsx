@@ -9,12 +9,11 @@ const Visualiser = () => {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState(50);
   const [sortingSpeed, setSortingSpeed] = useState(50);
-  const { extended } = useContext(context);
   const [sorting, setSorting] = useState(false);
-  const [selectedAlgo, setSelectedAlgo] = useState('mergesort');
-
+  const [paused,setPaused] =  useState(false);
   const [color,setColor] = useState([]);
-
+  const { extended , selectedAlgo } = useContext(context);
+  
   useEffect(() => {
     resetArray();
   }, [size]);
@@ -27,28 +26,32 @@ const Visualiser = () => {
     setArray(newArray); 
   };
   
-
   const randomFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-  
-  const visualiseArray = async (index, value,index2,value2,iscomparing = false) => {
+  const visualiseArray = async (index, value, index2, value2, isComparing = false) => {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        setArray((prevArray) => {
-          const newArray = [...prevArray];
-        if (value !== undefined) newArray[index] = value;
-        if (value2 !== undefined) newArray[index2] = value2;
-        
-        const selectedcolor = newArray.map((_,i)=>
-          i === index || i === index2 ? (iscomparing ? "red" : "cyan") : "default"
-        )
-        
-        setColor(selectedcolor);
-
-          return newArray;
-        });
-        resolve();
-      }, sortingSpeed); 
+          setTimeout(() => {
+            setArray((prevArray) => {
+              const newArray = [...prevArray];
+  
+              // Update the values in the array
+              if (value !== undefined) newArray[index] = value;
+              if (value2 !== undefined) newArray[index2] = value2;
+  
+              // Update the colors array
+              const newColors = newArray.map((_, i) =>
+                i === index || i === index2
+                  ? isComparing
+                    ? "red"
+                    : "cyan"
+                  : "default"
+              );
+              setColor(newColors);
+  
+              return newArray;
+            });
+            resolve(); // Resolve the promise after updating
+          }, sortingSpeed);
     });
   };
   

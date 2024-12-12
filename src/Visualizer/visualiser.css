@@ -20,7 +20,7 @@
     
 }
 .graph {
-    transition: height 0.3s ease, background-color 0.2s ease; 
+    transition: height 0.3s ease; 
     background-color: #19ddeb;
     margin: 0.5px;
     display: "inline-block";

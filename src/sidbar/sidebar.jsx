@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './sidebar.css';
 import { assets } from '../assets/assetss';
+import { context } from '../backend/context';
 
 const Sidebar = () => {
+  const {selectedAlgo,setSelectedAlgo} = useContext(context);
   return (
     <div className="sidebar">
   <div className="home">
@@ -18,7 +20,7 @@ const Sidebar = () => {
     <p className="logarithmic">LOGARITHMIC</p>
     <ul>
       <li>Quick Sort</li>
-      <li>Merge Sort</li>
+      <li onClick={() => setSelectedAlgo('mergesort')}>Merge Sort</li>
       <li>Heap Sort</li>
     </ul>
 

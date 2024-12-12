@@ -33,17 +33,20 @@ export const mergesort = async (array, visualiseArray) => {
   
     while (i <= mid) {
       mainarray[k++] = aux[i++];
-      await visualiseArray(k - 1, mainarray[k - 1],i-1,mainarray[i -1 ],true);
+      await visualiseArray(k - 1, mainarray[k - 1],i-1,mainarray[i -1 ],false);
     }
   
     while (j <= end) {
       mainarray[k++] = aux[j++];
-      await visualiseArray(k - 1, mainarray[k - 1],j - 1,mainarray[j -1],true);
+      await visualiseArray(k - 1, mainarray[k - 1],j - 1,mainarray[j -1],false);
     }
   
     console.log(`Merged: ${mainarray.slice(start, end + 1)}`);
   };
 
+  export const quicksort = async (mainarray,visualiseArray) =>{
+
+  }
 
   
   
