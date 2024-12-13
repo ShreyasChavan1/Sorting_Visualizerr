@@ -19,9 +19,9 @@ const Sidebar = () => {
     </div>
     <p className="logarithmic">LOGARITHMIC</p>
     <ul>
-      <li>Quick Sort</li>
-      <li onClick={() => setSelectedAlgo('mergesort')}>Merge Sort</li>
-      <li>Heap Sort</li>
+      <li onClick={() => setSelectedAlgo('Quicksort')}>Quick Sort</li>
+      <li onClick={() => setSelectedAlgo('Mergesort')}>Merge Sort</li>
+      <li onClick={() => setSelectedAlgo('Heapsort')}>Heap Sort</li>
     </ul>
 
     <p className="quadratic">QUADRATIC</p>

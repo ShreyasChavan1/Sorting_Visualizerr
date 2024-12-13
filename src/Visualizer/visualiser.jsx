@@ -34,11 +34,11 @@ const Visualiser = () => {
             setArray((prevArray) => {
               const newArray = [...prevArray];
   
-              // Update the values in the array
+             
               if (value !== undefined) newArray[index] = value;
               if (value2 !== undefined) newArray[index2] = value2;
   
-              // Update the colors array
+              
               const newColors = newArray.map((_, i) =>
                 i === index || i === index2
                   ? isComparing
@@ -50,7 +50,7 @@ const Visualiser = () => {
   
               return newArray;
             });
-            resolve(); // Resolve the promise after updating
+            resolve();
           }, sortingSpeed);
     });
   };
@@ -111,8 +111,8 @@ const Visualiser = () => {
               type="range" 
               id="speed-slider" 
               className="slider" 
-              min="10" 
-              max="500" 
+              min="5" 
+              max="1000" 
               value={sortingSpeed}
             />
             <span>Speed: {sortingSpeed}ms</span>
@@ -123,7 +123,7 @@ const Visualiser = () => {
             onClick={() => startSorting()} 
             style={{ marginLeft: '50px' }}
           >
-            Sort
+            {selectedAlgo}
           </button>
         </div>
       </div>

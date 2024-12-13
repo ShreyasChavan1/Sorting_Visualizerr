@@ -1,4 +1,5 @@
-export const mergesort = async (array, visualiseArray) => {
+//mergesort
+export const Mergesort = async (array, visualiseArray) => {
     const auxArray = [...array];
     await mergesortHelper(array, 0, array.length - 1, auxArray, visualiseArray);
   };
@@ -44,9 +45,59 @@ export const mergesort = async (array, visualiseArray) => {
     console.log(`Merged: ${mainarray.slice(start, end + 1)}`);
   };
 
-  export const quicksort = async (mainarray,visualiseArray) =>{
-
-  }
 
   
+
+
+//quicksort
+  export const Quicksort = async (mainarray, visualiseArray) => {
+    let low = 0;
+    let high = mainarray.length - 1;
+    await quicksorthelper(mainarray, low, high, visualiseArray);
+  };
   
+  const quicksorthelper = async (mainarray, low, high, visualiseArray) => {
+    if (low >= high) return; 
+  
+    const partitionIndex = await quick(mainarray, low, high, visualiseArray);
+   
+    await quicksorthelper(mainarray, low, partitionIndex - 1, visualiseArray);
+    await quicksorthelper(mainarray, partitionIndex + 1, high, visualiseArray);
+  };
+  
+  const quick = async (mainarray, low, high, visualiseArray) => {
+    let pivotIndex = low; 
+    let pivotValue = mainarray[pivotIndex];
+    let i = low + 1;
+    let j = high;
+  
+    while (i <= j) {
+      while (i <= high && mainarray[i] <= pivotValue) i++;
+      while (j >= low && mainarray[j] > pivotValue) j--;
+  
+      if (i < j) {
+       
+        let temp = mainarray[i];
+        mainarray[i] = mainarray[j];
+        mainarray[j] = temp;
+        
+        await visualiseArray(i, mainarray[i], j, mainarray[j], true);
+      }
+    }
+    
+    let temp = mainarray[low];
+    mainarray[low] = mainarray[j];
+    mainarray[j] = temp;
+    
+    await visualiseArray(low, mainarray[low], j, mainarray[j], true);
+  
+    return j;
+  };
+  
+  
+
+
+//Heapsort
+export const Heapsort = async(mainarray,visualiseArray)=>{
+
+}
