@@ -99,5 +99,43 @@ export const Mergesort = async (array, visualiseArray) => {
 
 //Heapsort
 export const Heapsort = async(mainarray,visualiseArray)=>{
+  let size = mainarray.length;
 
+  for(let i = Math.floor(size/2) - 1; i >= 0; --i) {
+    await heapify(mainarray,size,i,visualiseArray);
+  }
+
+  for(let j = size-1 ; j >0 ; --j){
+    let temp = mainarray[0];
+    mainarray[0] = mainarray[j];
+    mainarray[j] = temp;
+
+    await visualiseArray(0,mainarray[0],j,mainarray[j],true);
+    await heapify(mainarray,j,0,visualiseArray);
+  }
 }
+
+
+
+const heapify = async(mainarray,size,i,visualiseArray) => {
+  let left = 2 * i + 1;
+  let right = 2 * i + 2;
+  let max = i;
+  if(left < size && mainarray[left] > mainarray[max]){
+    max = left;
+  }
+  if(right < size && mainarray[right] > mainarray[max]){
+    max = right;
+  }
+  if(max !== i){
+    let temp = mainarray[i];
+    mainarray[i] = mainarray[max];
+    mainarray[max] = temp;
+    await visualiseArray(i,mainarray[i],max,mainarray[max],true);
+
+    await heapify(mainarray,size,max,visualiseArray);
+  }
+}
+
+
+

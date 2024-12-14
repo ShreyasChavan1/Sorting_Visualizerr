@@ -5,7 +5,7 @@ export const context = createContext();
 
     const ContextProvider = (props) =>{
         const [extended,setExtended] = useState(false);
-        const [selectedAlgo, setSelectedAlgo] = useState('quicksort');
+        const [selectedAlgo, setSelectedAlgo] = useState('Mergesort');
     const contextValue = {
         extended,
         setExtended,

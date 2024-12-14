@@ -4,13 +4,14 @@ import Naavbar from '../component/navbar';
 import { context } from '../backend/context';
 import Sidebar from '../sidbar/sidebar';
 import * as Algorithms from './Algorithms';
-
+import Footer from '../footer/footer';
+import { useRef } from 'react';
 const Visualiser = () => {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState(50);
   const [sortingSpeed, setSortingSpeed] = useState(50);
   const [sorting, setSorting] = useState(false);
-  const [paused,setPaused] =  useState(false);
+  const stopRef = useRef(false);
   const [color,setColor] = useState([]);
   const { extended , selectedAlgo } = useContext(context);
   
@@ -30,6 +31,10 @@ const Visualiser = () => {
 
   const visualiseArray = async (index, value, index2, value2, isComparing = false) => {
     return new Promise((resolve) => {
+        if(stopRef.current){
+          resolve();
+          return
+        }
           setTimeout(() => {
             setArray((prevArray) => {
               const newArray = [...prevArray];
@@ -54,21 +59,20 @@ const Visualiser = () => {
           }, sortingSpeed);
     });
   };
-  
-  
-  // const arraysAreEqual = (arr1, arr2) => arr1.length === arr2.length && arr1.every((val, index) => val === arr2[index]);
-  
+    
   const startSorting = async () => {
     setSorting(true);
+    stopRef.current = false;
     const sortingAlgo = Algorithms[selectedAlgo];
     if (sortingAlgo) {
       await sortingAlgo([...array], visualiseArray);
     }
-    // const sorted = [...array].sort((a, b) => a - b);
-    // console.log(arraysAreEqual(sorted, array)); 
     setSorting(false);
   };
-  
+  const togglestop = () =>{
+    stopRef.current = true;
+    setSorting(false);
+  };
   const containerWidth = 800;
   const barWidth = Math.max(Math.floor(containerWidth / array.length), 2);
   return (
@@ -112,10 +116,10 @@ const Visualiser = () => {
               id="speed-slider" 
               className="slider" 
               min="5" 
-              max="1000" 
+              max="2000" 
               value={sortingSpeed}
             />
-            <span>Speed: {sortingSpeed}ms</span>
+            <span>Time: {sortingSpeed}ms</span>
           </div>
           <button 
             className="btn btn-info" 
@@ -125,8 +129,10 @@ const Visualiser = () => {
           >
             {selectedAlgo}
           </button>
+          <button className="btn btn-info" onClick={togglestop} style={{ marginLeft: '40px' }}> Stop </button>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
