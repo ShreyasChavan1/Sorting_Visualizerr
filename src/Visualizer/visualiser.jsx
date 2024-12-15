@@ -6,6 +6,8 @@ import Sidebar from '../sidbar/sidebar';
 import * as Algorithms from './Algorithms';
 import Footer from '../footer/footer';
 import { useRef } from 'react';
+import Description from './description';
+
 const Visualiser = () => {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState(50);
@@ -38,17 +40,15 @@ const Visualiser = () => {
           setTimeout(() => {
             setArray((prevArray) => {
               const newArray = [...prevArray];
-  
-             
+      
               if (value !== undefined) newArray[index] = value;
               if (value2 !== undefined) newArray[index2] = value2;
-  
-              
+        
               const newColors = newArray.map((_, i) =>
                 i === index || i === index2
                   ? isComparing
                     ? "red"
-                    : "cyan"
+                    : "default"
                   : "default"
               );
               setColor(newColors);
@@ -95,7 +95,7 @@ const Visualiser = () => {
         </div>
         <hr className="divider" />
         <div className="controls">
-          <button className="btn btn-info" onClick={() => resetArray()} disabled={sorting}>Generate New</button>
+          <button className="btnn" onClick={() => resetArray()} disabled={sorting}>Generate New</button>
           <div className="slider_div">
             <input 
               onChange={(e) => setSize(Number(e.target.value))} 
@@ -122,16 +122,17 @@ const Visualiser = () => {
             <span>Time: {sortingSpeed}ms</span>
           </div>
           <button 
-            className="btn btn-info" 
+            className="btnn" 
             disabled={sorting}
             onClick={() => startSorting()} 
             style={{ marginLeft: '50px' }}
           >
             {selectedAlgo}
           </button>
-          <button className="btn btn-info" onClick={togglestop} style={{ marginLeft: '40px' }}> Stop </button>
+          <button className="btnn" onClick={togglestop} style={{ marginLeft: '40px' }}> Stop </button>
         </div>
       </div>
+      <Description/>
       <Footer/>
     </>
   );

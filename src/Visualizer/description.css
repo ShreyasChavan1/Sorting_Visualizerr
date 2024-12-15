@@ -1,0 +1,48 @@
+.desc{
+    background-image: url(../assets/sort1.jpg);
+        background-position: left;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        color: antiquewhite;
+}
+.left{
+    padding: 30px;
+    max-width: 1000px;
+}
+.left .card{
+    margin: 30px;
+    background-color: #161616;
+    color: whitesmoke;
+}
+.left .information{
+    margin: auto;
+    padding-right: 5vw;
+    padding-left: 2vw;
+    font-size: 17px;
+    max-width: 1500px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.right{
+    padding: 30px;
+}
+.left .complexity{
+    background: #00000000;
+    margin-top: 0;
+}
+td, th {
+    padding: 10px; /* Add some padding */
+    font-size: 18px; /* Adjust font size */
+    text-align: left; /* Align text to the left */
+  }
+tr {
+border-bottom: 1px  solid #D3D3D3;
+}
+td:not(:last-child), th:not(:last-child) {
+border-right: 1px solid #D3D3D3;
+}

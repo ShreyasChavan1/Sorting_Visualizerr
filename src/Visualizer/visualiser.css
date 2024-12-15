@@ -21,7 +21,7 @@
 }
 .graph {
     transition: height 0.3s ease; 
-    background-color: #19ddeb;
+    background: linear-gradient(0deg, rgb(35, 218, 228) 30%, rgba(41,12,58,1) 100%);
     margin: 0.5px;
     display: "inline-block";
     margin-bottom: 50px;
@@ -29,21 +29,28 @@
   }
 
   .graph.default {
-    background-color: cyan;
+    background: linear-gradient(0deg, rgba(35, 218, 228) 30%, rgba(41,12,58,1) 100%);
   }
   
   .graph.red {
-    background-color: red;
+    background: linear-gradient(0deg, rgb(229, 18, 21) 0%, rgba(58,12,29,1) 100%);
   }
-.divider{
+/* .divider{
     margin: 0px 0px;
     height: 5px;
     background-color: #19ddeb56;
-}
+} */
 .controls{
     margin-top: 20px;
     display: flex;
     justify-content: center;
+}
+.btnn{
+  background-color: orange;
+  color: #FFFFFF; /* White text */
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
 }
 .slider_div{
     display: flex;
