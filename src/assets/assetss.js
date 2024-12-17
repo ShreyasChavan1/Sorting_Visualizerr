@@ -5,5 +5,5 @@ import sort from './sort.png';
 export const assets ={
     app_logo,
     home,
-    sort
+    sort,
 }

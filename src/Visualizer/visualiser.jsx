@@ -52,7 +52,6 @@ const Visualiser = () => {
                   : "default"
               );
               setColor(newColors);
-  
               return newArray;
             });
             resolve();
@@ -93,7 +92,7 @@ const Visualiser = () => {
             ></div>
           ))}
         </div>
-        <hr className="divider" />
+        {/* <hr className="divider" /> */}
         <div className="controls">
           <button className="btnn" onClick={() => resetArray()} disabled={sorting}>Generate New</button>
           <div className="slider_div">
