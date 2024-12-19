@@ -20,7 +20,9 @@
     background-color: #161616;
     color: whitesmoke;
 }
-
+.nav-item{
+    cursor: pointer;
+}
 .nav-link{
     background-color: #353535;
     margin-right: 2px;

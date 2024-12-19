@@ -5,22 +5,22 @@ import { collection, doc, getDocs ,getDoc, query, where} from "firebase/firestor
 import { context } from '../backend/context';
 import { db } from '../backend/firebase';
 
+
 const Description = () => {
     const [lang, setLang] = useState('c++');
     const {selectedAlgo} = useContext(context);
     const [desc,setDesc] = useState("");
-
-
-    
-      
+    const [codes,setCodes] = useState({});
 
     const getdata = async() =>{
         const userRef = collection(db,"Algo-Description");
         const q = query(userRef,where("Name","==",selectedAlgo));
-
+        
         try {
             const querysnapshot = await getDocs(q);
-            const dec = querysnapshot.docs[0].data().Description; // Get the description from the first document
+            const dec = querysnapshot.docs[0].data().Description;
+            const cod = querysnapshot.docs[0].data().Codes;
+            setCodes(cod);
             setDesc(dec.toString());
         } catch (error) {
             alert("there is error")
@@ -28,7 +28,7 @@ const Description = () => {
     }
     useEffect(()=>{
         getdata();
-    },selectedAlgo)
+    },[selectedAlgo])
 
     return (
         <>
@@ -57,16 +57,23 @@ const Description = () => {
                                 <li onClick={()=>setLang('js')} className="nav-item">
                                     <a className= {`nav-link ${lang === 'js' ? 'act' :""}`}>Javascript</a>
                                 </li>
-                                <li onClick={()=>setLang('rust')} className="nav-item">
-                                    <a className= {`nav-link ${lang === 'rust' ? 'act' :""}`}>Rust</a>
-                                </li>
+                                
                             </ul>
                         </div>
                         <div className="card-body">
-                            
-                            <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            
-                        </div>
+                            <div className="card-text">
+                                <pre>
+                                    <code >
+                                        <div style={{ display: "block", textAlign: "left" ,color:"cyan"}}
+                                            className={`language-${lang}`}
+                                            dangerouslySetInnerHTML={{
+                                                __html: codes[lang],
+                                            }}
+                                        />
+                                    </code>
+                                </pre>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div className="right">
