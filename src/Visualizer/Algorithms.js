@@ -45,9 +45,8 @@ export const Mergesort = async (array, visualiseArray) => {
     console.log(`Merged: ${mainarray.slice(start, end + 1)}`);
   };
 
-
+// -------------------------------------------------------------------------------------------------------------------------------------------
   
-
 
 //quicksort
   export const Quicksort = async (mainarray, visualiseArray) => {
@@ -95,7 +94,7 @@ export const Mergesort = async (array, visualiseArray) => {
   };
   
   
-
+// -------------------------------------------------------------------------------------------------------------------------------------------
 
 //Heapsort
 export const Heapsort = async(mainarray,visualiseArray)=>{
@@ -136,6 +135,7 @@ const heapify = async(mainarray,size,i,visualiseArray) => {
 }
 
 
+// -------------------------------------------------------------------------------------------------------------------------------------------
 
 //quadratic ones
 // bubble sort EZ!
@@ -157,5 +157,27 @@ export const Bubblesort = async(mainarray,visualiseArray) =>{
   }
 }
 
+// -------------------------------------------------------------------------------------------------------------------------------------------
+
+//Selection sort EZ!
+export const Selectionsort = async(mainarray,visualiseArray) =>{
+  let n = mainarray.length;
+  let min = 0;
+  for(let i = 0;i < n - 1;i++){
+    min = i;
+    for(let j = i + 1; j < n ;j++){
+      if(mainarray[j] < mainarray[min]){
+        min = j;
+      }
+    }
+    
+      let temp = mainarray[i];
+      mainarray[i] = mainarray[min];
+      mainarray[min] = temp;
+
+      await visualiseArray(i,mainarray[i],min,mainarray[min],true);
+    
+  }
+}
 
 

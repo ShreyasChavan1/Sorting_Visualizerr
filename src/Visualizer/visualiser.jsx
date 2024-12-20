@@ -68,10 +68,14 @@ const Visualiser = () => {
     }
     setSorting(false);
   };
+
+
   const togglestop = () =>{
     stopRef.current = true;
     setSorting(false);
   };
+
+  
   const containerWidth = 800;
   const barWidth = Math.max(Math.floor(containerWidth / array.length), 2);
   return (
