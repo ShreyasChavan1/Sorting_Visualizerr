@@ -12,6 +12,11 @@ const Description = () => {
     const [desc,setDesc] = useState("");
     const [codes,setCodes] = useState({});
 
+    const [average,setAverage] = useState("");
+    const [best,setBest] = useState("");
+    const [worst,setWorst] = useState("");
+    const [space,setSpace] = useState("");
+
     const getdata = async() =>{
         const userRef = collection(db,"Algo-Description");
         const q = query(userRef,where("Name","==",selectedAlgo));
@@ -20,6 +25,15 @@ const Description = () => {
             const querysnapshot = await getDocs(q);
             const dec = querysnapshot.docs[0].data().Description;
             const cod = querysnapshot.docs[0].data().Codes;
+            const avg = querysnapshot.docs[0].data().Average;
+            const bst = querysnapshot.docs[0].data().Best;
+            const wst = querysnapshot.docs[0].data().Worst;
+            const spc = querysnapshot.docs[0].data().Space;
+
+            setAverage(avg.toString());
+            setBest(bst.toString());
+            setWorst(wst.toString());
+            setSpace(spc.toString());
             setCodes(cod);
             setDesc(dec.toString());
         } catch (error) {
@@ -32,16 +46,33 @@ const Description = () => {
 
     return (
         <>
-            <div className="desc">
-                <div className="left">
+            <div className="dec">
+                <div className="top">
                     <div className="information">
-                    <h2 className='Heading'>Description</h2>
-                    <br/>
+                        <h2 className='Heading'>Description</h2>
+                        <br />
                         {desc}
                     </div>
-                    <div className="space" style={{height:"10vh"}}>
-
-                    </div>
+                    <table className='complexity'>
+                        <tr>
+                            <td>Average Complexity</td>
+                            <td>{average}</td>
+                        </tr>
+                        <tr>
+                            <td>Best Case</td>
+                            <td>{best}</td>
+                        </tr>
+                        <tr>
+                            <td>Worst Case</td>
+                            <td>{worst}</td>
+                        </tr>
+                        <tr>
+                            <td>Space Complexity</td>
+                            <td>{space}</td>
+                        </tr>
+                    </table>
+            </div>        
+                <div className="bottom">
                     <div className="card text-center">
                         <div className="card-header">
                             <ul className="nav  card-header-tabs">
@@ -75,29 +106,8 @@ const Description = () => {
                                 </div>
                             </div>
                     </div>
-                </div>
-                <div className="right">
-                    <table className='complexity'>
-                        <tr>
-                            <td>Average Complexity</td>
-                            <td>O(n × log n)</td>
-                        </tr>
-                        <tr>
-                            <td>Best Case</td>
-                            <td>O(n × log n)</td>
-                        </tr>
-                        <tr>
-                            <td>Worst Case</td>
-                            <td>O(n × log n)</td>
-                        </tr>
-                        <tr>
-                            <td>Space Complexity</td>
-                            <td>O(n)</td>
-                        </tr>
-                    </table>
-                    <div style={{height:"36vh"}}></div>
-                </div>
             </div>
+        </div>
         </>
     )
 }

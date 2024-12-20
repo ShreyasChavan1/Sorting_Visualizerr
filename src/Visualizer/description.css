@@ -1,24 +1,51 @@
-.desc{
+.dec{
     background-image: url(../assets/sort1.jpg);
         background-position: left;
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        /* align-items: center;
+        justify-content: center; */
+        /* flex: 1; */
         padding: 30px;
         color: antiquewhite;
 
 }
-.left{
-    padding: 30px;
-    max-width: 1000px;
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* flex: 1; */
+    /* align-items: flex-start; */
 }
-.left .card{
-    margin: 30px;
-    background-color: #161616;
+.top .information{
+    margin: auto;
+    padding-right: 3vw;
+    font-size: 17px;
+    max-width: 1050px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.top{
+    padding: 30px;
+}
+.top .complexity{
+    background: #00000000;
+}
+
+
+.card{
+    margin: 30px 30px;
+    background-color: #3a3a3a;
     color: whitesmoke;
+    max-width: 900px;
+}
+.card-text{
+    background-color: #161616;
+
+    padding: 10px;
 }
 .nav-item{
     cursor: pointer;
@@ -36,23 +63,6 @@
     background-color: #161616;
 }
 
-
-.left .information{
-    margin: auto;
-    padding-right: 5vw;
-    padding-left: 2vw;
-    font-size: 17px;
-    max-width: 1500px;
-    position: relative;
-    margin-bottom: 20px;
-}
-.right{
-    padding: 30px;
-}
-.left .complexity{
-    background: #00000000;
- 
-}
 
 /* table css */
 td, th {

@@ -115,8 +115,6 @@ export const Heapsort = async(mainarray,visualiseArray)=>{
   }
 }
 
-
-
 const heapify = async(mainarray,size,i,visualiseArray) => {
   let left = 2 * i + 1;
   let right = 2 * i + 2;
@@ -134,6 +132,28 @@ const heapify = async(mainarray,size,i,visualiseArray) => {
     await visualiseArray(i,mainarray[i],max,mainarray[max],true);
 
     await heapify(mainarray,size,max,visualiseArray);
+  }
+}
+
+
+
+//quadratic ones
+// bubble sort EZ!
+export const Bubblesort = async(mainarray,visualiseArray) =>{
+  let n = mainarray.length;
+  for(let i = 0; i < n-1 ;i++){
+    let isswaped = false;
+    for(let j = 0 ; j < n - i - 1 ; j++){
+      if(mainarray[j] > mainarray[j+1]){
+        let temp = mainarray[j];
+        mainarray[j] = mainarray[j+1];
+        mainarray[j+1] = temp;
+        
+        isswaped = true;
+        await visualiseArray(j,mainarray[j],j+1,mainarray[j+1],true);
+      }
+    }
+    if(!isswaped) break;
   }
 }
 
