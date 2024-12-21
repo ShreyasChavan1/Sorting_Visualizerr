@@ -181,3 +181,19 @@ export const Selectionsort = async(mainarray,visualiseArray) =>{
 }
 
 
+//insertionsort
+export const Insertionsort = async(mainarray,visualiseArray)=>{
+  let n = mainarray.length;
+  let key;
+  for(let i = 1 ; i < n ;i++){
+    key = mainarray[i];
+    let j = i - 1;
+    while(j >= 0 && mainarray[j] > key){
+      mainarray[j + 1] = mainarray[j];
+      await visualiseArray(j + 1, mainarray[j + 1], j, mainarray[j], true);
+      j--;
+    }
+    mainarray[j + 1]  = key;
+    await visualiseArray(j + 1, key, i, mainarray[i], false);
+  }
+}

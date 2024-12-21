@@ -48,7 +48,7 @@ const Visualiser = () => {
                 i === index || i === index2
                   ? isComparing
                     ? "red"
-                    : "default"
+                    : "green"
                   : "default"
               );
               setColor(newColors);

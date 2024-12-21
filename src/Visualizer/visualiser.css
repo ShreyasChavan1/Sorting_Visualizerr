@@ -35,6 +35,9 @@
   .graph.red {
     background: linear-gradient(0deg, rgb(229, 18, 21) 0%, rgba(58,12,29,1) 100%);
   }
+  .graph.green{
+    background: linear-gradient(0deg, rgb(36, 229, 18) 0%, rgba(58,12,29,1) 100%);
+  }
 /* .divider{
     margin: 0px 0px;
     height: 5px;
