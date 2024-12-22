@@ -27,6 +27,7 @@ const Sidebar = () => {
     <p className="quadratic">QUADRATIC</p>
     <ul>
       <li onClick={() => setSelectedAlgo('Bubblesort')}>Bubble Sort</li>
+      <li onClick={() => setSelectedAlgo('Shakersort')}>Shaker Sort</li>
       <li onClick={() => setSelectedAlgo('Selectionsort')}>Selection Sort</li>
       <li onClick={() => setSelectedAlgo('Insertionsort')}>Insertion Sort</li>
     </ul>

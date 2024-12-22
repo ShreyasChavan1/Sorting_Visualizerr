@@ -157,6 +157,7 @@ export const Bubblesort = async(mainarray,visualiseArray) =>{
   }
 }
 
+
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //Selection sort EZ!
@@ -181,6 +182,9 @@ export const Selectionsort = async(mainarray,visualiseArray) =>{
 }
 
 
+// -------------------------------------------------------------------------------------------------------------------------------------------
+
+
 //insertionsort
 export const Insertionsort = async(mainarray,visualiseArray)=>{
   let n = mainarray.length;
@@ -196,4 +200,31 @@ export const Insertionsort = async(mainarray,visualiseArray)=>{
     mainarray[j + 1]  = key;
     await visualiseArray(j + 1, key, i, mainarray[i], false);
   }
+}
+
+
+//shakersort
+export const Shakersort = async(mainarray,visualiseArray)=>{
+  let l = 0;
+  let r = mainarray.length - 1;
+  let swapped;
+  do{
+    swapped = false;
+    for(let i = l;i < r;i++){
+      if(mainarray[i] > mainarray[i + 1]){
+        [mainarray[i],mainarray[i+1]] = [mainarray[i + 1],mainarray[i]];
+        swapped = true;
+        await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
+      }
+    }
+    r--;
+    for(let j = r; j > l ;j--){
+      if(mainarray[j] < mainarray[j - 1]){
+        [mainarray[j],mainarray[j - 1]] = [mainarray[j - 1],mainarray[j]];
+        swapped = true;
+        await visualiseArray(j,mainarray[j],j - 1,mainarray[j- 1],true);
+      }
+    }
+    l++;
+  }while(swapped);
 }
