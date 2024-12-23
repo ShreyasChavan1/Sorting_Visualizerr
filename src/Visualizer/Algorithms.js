@@ -227,4 +227,50 @@ export const Shakersort = async(mainarray,visualiseArray)=>{
     }
     l++;
   }while(swapped);
+ 
 }
+
+
+//pancake sort ?
+
+
+async function flip(arr, k, visualiseArray) {
+  let left = 0;
+  while (left < k) {
+      [arr[left], arr[k]] = [arr[k], arr[left]];
+
+      // Visualize the flipping process
+      await visualiseArray(left, arr[left], k, arr[k], true);
+
+      k--;
+      left++;
+  }
+}
+
+async function max_index(arr, k) {
+  let index = 0;
+  for (let i = 1; i < k; i++) {
+      if (arr[i] > arr[index]) {
+          index = i;
+      }
+  }
+  return index;
+}
+
+export async function Pancakesort(arr, visualiseArray) {
+  let n = arr.length;
+  while (n > 1) {
+      let maxdex = await max_index(arr, n);
+
+      if (maxdex !== n - 1) {
+          
+          await flip(arr, maxdex, visualiseArray);
+
+         
+          await flip(arr, n - 1, visualiseArray);
+      }
+
+      n--;
+  }
+}
+

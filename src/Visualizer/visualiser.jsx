@@ -42,7 +42,7 @@ const Visualiser = () => {
               const newArray = [...prevArray];
       
               if (value !== undefined) newArray[index] = value;
-              if (value2 !== undefined) newArray[index2] = value2;
+              if (value2 !== undefined && index2 !== undefined) newArray[index2] = value2;
         
               const newColors = newArray.map((_, i) =>
                 i === index || i === index2
