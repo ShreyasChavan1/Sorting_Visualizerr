@@ -202,6 +202,7 @@ export const Insertionsort = async(mainarray,visualiseArray)=>{
   }
 }
 
+// -------------------------------------------------------------------------------------------------------------------------------------------
 
 //shakersort
 export const Shakersort = async(mainarray,visualiseArray)=>{
@@ -230,6 +231,7 @@ export const Shakersort = async(mainarray,visualiseArray)=>{
  
 }
 
+// -------------------------------------------------------------------------------------------------------------------------------------------
 
 //pancake sort ?
 
@@ -274,3 +276,27 @@ export async function Pancakesort(arr, visualiseArray) {
   }
 }
 
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+export const Oddevensort = async(mainarray,visualiseArray) =>{
+  let n = mainarray.length;
+  let sorted = false;
+  while(!sorted){
+    sorted = true;
+    for(let i = 1 ; i < n - 1 ; i+=2){
+      if(mainarray[i] > mainarray[i+1]){
+        [mainarray[i],mainarray[i+1]] = [mainarray[i+1],mainarray[i]];
+        sorted = false;
+        await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
+      }
+    }
+
+    for(let i = 0; i < n - 1; i+=2){
+      if(mainarray[i] > mainarray[i+1]){
+        [mainarray[i],mainarray[i+1]] = [mainarray[i+1],mainarray[i]];
+        sorted = false;
+        await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
+      }
+    }
+  }
+}

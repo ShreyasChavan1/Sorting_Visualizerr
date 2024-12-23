@@ -12,6 +12,7 @@ const Visualiser = () => {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState(50);
   const [sortingSpeed, setSortingSpeed] = useState(50);
+  // const speedRef = useRef(sortingSpeed);
   const [sorting, setSorting] = useState(false);
   const stopRef = useRef(false);
   const [color,setColor] = useState([]);
@@ -69,6 +70,16 @@ const Visualiser = () => {
     setSorting(false);
   };
 
+  const reversearray = async () =>{
+    let n = array.length;
+    let i = 0;
+    while(i < n){
+      [array[i],array[n - 1]] = [array[n-1],array[i]];
+      await visualiseArray(i,array[i],n -1,array[n-1],false);
+      i++;
+      n--;
+    }
+  }
 
   const togglestop = () =>{
     stopRef.current = true;
@@ -133,6 +144,8 @@ const Visualiser = () => {
             {selectedAlgo}
           </button>
           <button className="btnn" onClick={togglestop} style={{ marginLeft: '40px' }}> Stop </button>
+          <button className="btnn" onClick={reversearray} style={{ marginLeft: '40px' }}> rev </button>
+          {/* <button className="btnn" onClick={()=>setSortingSpeed(sortingSpeed/2)} style={{ marginLeft: '40px' }}> 2x </button> */}
         </div>
       </div>
       <Description/>

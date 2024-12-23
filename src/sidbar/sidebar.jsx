@@ -31,6 +31,7 @@ const Sidebar = () => {
       <li onClick={() => setSelectedAlgo('Selectionsort')}>Selection Sort</li>
       <li onClick={() => setSelectedAlgo('Insertionsort')}>Insertion Sort</li>
       <li onClick={() => setSelectedAlgo('Pancakesort')}>Pancakesort</li>
+      <li onClick={() => setSelectedAlgo('Oddevensort')}>Odd even sort</li>
     </ul>
 
     <p className="weird">WEIRD</p>
