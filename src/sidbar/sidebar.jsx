@@ -37,8 +37,8 @@ const Sidebar = () => {
     <p className="weird">WEIRD</p>
     <ul>
       <li onClick={() => setSelectedAlgo('Bitonicsort')}>Bitonic Sort</li>
+      <li onClick={() => setSelectedAlgo('Shellsort')}>Shell Sort</li>
       <li>Radix Sort</li>
-      <li>Shell Sort</li>
     </ul>
   </div>
 </div>

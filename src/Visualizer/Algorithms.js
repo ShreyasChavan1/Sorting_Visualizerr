@@ -302,7 +302,11 @@ export const Oddevensort = async(mainarray,visualiseArray) =>{
   }
 }
 
+
+//weird sorts
+
 // -------------------------------------------------------------------------------------------------------------------------------------------
+//Bitonic sort
 export const Bitonicsort = async (arr, visualiseArray) => {
   let n = arr.length;
   let k, j, l, i, temp;
@@ -329,4 +333,32 @@ export const Bitonicsort = async (arr, visualiseArray) => {
       await visualiseArray(i, arr[i], undefined, undefined, false); // Force final visualization
   }
 };
-//pending debugging
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+//Shellsort
+export const Shellsort = async (arr, visualiseArray) => {
+  let n = arr.length;
+
+  for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+    for (let i = gap; i < n; i++) {
+      let key = arr[i];
+      let j = i;
+      while (j >= gap && arr[j - gap] > key) {
+        arr[j] = arr[j - gap];
+        await visualiseArray(j, arr[j], j - gap, arr[j - gap], true); 
+        j -= gap;
+      }
+
+      arr[j] = key;
+      await visualiseArray(j, key, i, arr[i], false);
+    }
+  }
+
+  for (let i = 0; i < n; i++) {
+    await visualiseArray(i, arr[i], null, null, false);
+  }
+};
+
+//pending explanation

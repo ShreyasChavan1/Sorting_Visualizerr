@@ -146,7 +146,6 @@ const Visualiser = () => {
           </button>
           <button className="btnn" onClick={togglestop} style={{ marginLeft: '40px' }}> Stop </button>
           <button className="btnn" onClick={reversearray} style={{ marginLeft: '40px' }}> rev </button>
-          {/* <button className="btnn" onClick={()=>setSortingSpeed(sortingSpeed/2)} style={{ marginLeft: '40px' }}> 2x </button> */}
         </div>
       </div>
       <Description/>
