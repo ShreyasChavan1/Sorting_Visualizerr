@@ -278,6 +278,7 @@ export async function Pancakesort(arr, visualiseArray) {
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
+//oddevensort
 export const Oddevensort = async(mainarray,visualiseArray) =>{
   let n = mainarray.length;
   let sorted = false;
@@ -300,3 +301,32 @@ export const Oddevensort = async(mainarray,visualiseArray) =>{
     }
   }
 }
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+export const Bitonicsort = async (arr, visualiseArray) => {
+  let n = arr.length;
+  let k, j, l, i, temp;
+      for (k = 2; k <= n; k *= 2) {
+          for (j = k / 2; j > 0; j /= 2) {
+              for (i = 0; i < n; i++) {
+                  l = i ^ j;
+                  if (l > i) {
+                      if (
+                          ((i & k) == 0 && arr[i] > arr[l]) ||
+                          ((i & k) !== 0 && arr[i] < arr[l])
+                      ) {
+                          temp = arr[i];
+                          arr[i] = arr[l];
+                          arr[l] = temp;
+                         
+                          await visualiseArray(i, arr[i], l, arr[l], true);
+                      }
+                  }
+              }
+          }
+      }
+  for (let i = 0; i < n; i++) {
+      await visualiseArray(i, arr[i], undefined, undefined, false); // Force final visualization
+  }
+};
+//pending debugging

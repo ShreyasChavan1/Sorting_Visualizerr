@@ -116,9 +116,10 @@ const Visualiser = () => {
               type="range" 
               id="slider" 
               className="slider" 
-              min="10" 
-              max="500" 
+              min={selectedAlgo === "Bitonicsort" ? 16 : 10} 
+              max={selectedAlgo === "Bitonicsort" ? 512 :500} 
               value={size}
+              step={selectedAlgo === "Bitonicsort" ? 16 : 1}
               disabled={sorting}
             />
             <span>Elements: {size}</span>
