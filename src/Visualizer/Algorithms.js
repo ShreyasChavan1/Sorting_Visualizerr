@@ -361,4 +361,39 @@ export const Shellsort = async (arr, visualiseArray) => {
   }
 };
 
-//pending explanation
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+//radix sort not so Ez !!!
+const getmax =(arr,n)=>{
+  let max = 0;
+  for(let i = 0 ; i < n ;i++){
+    if(max < arr[i].toString().length){
+      max = arr[i].toString().length;
+    }
+  }
+  return max;
+}
+
+const getpos = (num,place) =>{
+      return Math.floor(Math.abs(num)/ Math.pow(10,place)) % 10;
+}
+export const Radixsort = async(arr,visualiseArray) => {
+  let n = arr.length;
+  let max = getmax(arr,n);
+
+  for(let i = 0; i < max ;i++){
+      let bucket = Array.from({length : 10}, () => [ ]);
+      for(let j = 0 ; j < arr.length ; j++){
+          bucket[getpos(arr[j],i)].push(arr[j]);
+
+          await visualiseArray(j, arr[j], null, null, true);
+      }
+      arr = [ ].concat(...bucket);
+
+      for (let k = 0; k < arr.length; k++) {
+        await visualiseArray(k, arr[k], null, null, false); 
+      }
+  }
+  return arr;
+}

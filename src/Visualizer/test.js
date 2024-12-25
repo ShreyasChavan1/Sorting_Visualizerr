@@ -1,33 +1,35 @@
-function Bitonicsort(arr) {
-  let n = arr.length;
-  let k, j, l, i, temp;
-
-      for (k = 2; k <= n; k *= 2) {
-          for (j = k / 2; j > 0; j /= 2) {
-              for (i = 0; i < n; i++) {
-                  l = i ^ j;
-                  if (l > i) {
-                      if (
-                          ((i & k) == 0 && arr[i] > arr[l]) ||
-                          ((i & k) !== 0 && arr[i] < arr[l])
-                      ) {
-                          temp = arr[i];
-                          arr[i] = arr[l];
-                          arr[l] = temp;
-                         
-                          // console.log(`Swapping: ${arr[i]} with ${arr[l]}`); // Log for debugging
-                      }
-                  }
-              }
-          }
+function getmax(arr,n){
+    let max = 0;
+    for(let i = 0 ; i < n ;i++){
+      if(max < arr[i].toString().length){
+        max = arr[i].toString().length;
       }
-      return arr;
-  };
+    }
+    return max;
+  }
+  
+  function getpos (num,place) {
+        return Math.floor(Math.abs(num)/ Math.pow(10,place)) % 10;
+  }
+  //radix sort not so Ez !!!
+function Radixsort (arr) {
+    let n = arr.length;
+    let max = getmax(arr,n);
+
+    for(let i = 0; i < max ;i++){
+        let bucket = Array.from({length : 10}, () => [ ]);
+        for(let j = 0 ; j < arr.length ; j++){
+            bucket[getpos(arr[j],i)].push(arr[j]);
+        }
+        arr = [ ].concat(...bucket);
+    }
+    return arr;
+  }
 
 const testArray = [34, 7, 23, 32, 5, 62, 8, 3];
 
 // Execute bitonic sort on the array
-const sortedArray = Bitonicsort([...testArray]); // Use a copy to preserve the original
+const sortedArray = Radixsort([...testArray]); // Use a copy to preserve the original
 
 console.log("Original Array:", testArray);
 console.log("Sorted Array:", sortedArray);
