@@ -39,6 +39,9 @@ const Sidebar = () => {
       <li onClick={() => setSelectedAlgo('Bitonicsort')}>Bitonic Sort</li>
       <li onClick={() => setSelectedAlgo('Shellsort')}>Shell Sort</li>
       <li onClick={() => setSelectedAlgo('Radixsort')}>Radix Sort</li>
+      <li onClick={() => setSelectedAlgo('Combsort')}>Comb Sort</li>
+      <li onClick={() => setSelectedAlgo('Bongosort')}>Bongo Sort</li>
+      <li onClick={() => setSelectedAlgo('Stoogesort')}>Stooge Sort</li>
     </ul>
   </div>
 </div>

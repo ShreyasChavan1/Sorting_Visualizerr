@@ -234,8 +234,6 @@ export const Shakersort = async(mainarray,visualiseArray)=>{
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //pancake sort ?
-
-
 async function flip(arr, k, visualiseArray) {
   let left = 0;
   while (left < k) {
@@ -374,7 +372,6 @@ const getmax =(arr,n)=>{
   }
   return max;
 }
-
 const getpos = (num,place) =>{
       return Math.floor(Math.abs(num)/ Math.pow(10,place)) % 10;
 }
@@ -396,4 +393,100 @@ export const Radixsort = async(arr,visualiseArray) => {
       }
   }
   return arr;
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------
+//combsort kinda EZ ?
+
+export const Combsort = async(arr,visualiseArray) =>{
+  let size = arr.length;
+  let shrink = 1.3;
+  let gap = size;
+  let sorted = false;
+
+  while(!sorted){
+    gap = parseInt(gap/shrink);
+    if(gap <= 1){
+      sorted = true;
+      gap = 1;
+    }
+
+    for(let i = 0; i < size - gap ;i++){
+      let sm = gap + i;
+      if(arr[i] > arr[sm]){
+        [arr[i],arr[sm]] = [arr[sm],arr[i]];
+        sorted = false;
+        await visualiseArray(i, arr[i], sm,arr[sm] ,true);
+      }
+    }
+  }
+  for (let k = 0; k < arr.length; k++) {
+      await visualiseArray(k, arr[k], null, null, false); 
+    }
+  
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------
+//bongosort >
+
+const isSorted = (arr) =>{
+  let n = arr.length;
+  for(let i = 1 ; i < n ; i++){
+    if(arr[i] < arr[i - 1]){
+      return false;
+    }
+  }
+  return true;
+}
+const shuffle =async (arr,visualiseArray)=>{
+  var n = arr.length , index;
+  while(n > 0){
+    index = Math.floor(Math.random() * n);
+    n--;
+    [arr[n],arr[index]] = [arr[index],arr[n]];
+    await visualiseArray(n,arr[n],index,arr[index],true);
+  }
+  return arr;
+}
+export const Bongosort = async(arr,visualiseArray) =>{
+  var sorted = false;
+  let maxattemps = 50;
+  let attempts = 0;
+  while(!sorted && attempts < maxattemps){
+    arr = await shuffle(arr,visualiseArray);
+    sorted = isSorted(arr);
+    attempts++;
+  }
+  return arr;
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------
+//stoogesort?
+
+export const Stoogesort = async(arr,visualiseArray) =>{
+  let l = 0;
+  let h = arr.length - 1;
+
+  await stoogehelper(arr,l,h,visualiseArray);
+
+  for (let k = 0; k < arr.length; k++) {
+      await visualiseArray(k, arr[k], null, null, false); 
+  }
+}
+const stoogehelper = async(arr,l,h,visualiseArray) => {
+  if(l >= h) return;
+
+  if(arr[l] > arr[h]){
+    [arr[l],arr[h]] = [arr[h],arr[l]];
+    await visualiseArray(l,arr[l],h,arr[h],true);
+  }
+
+  if(h - l + 1 > 2){
+    let t = parseInt((h - l + 1)/3,10);
+
+   await stoogehelper(arr,l,h - t,visualiseArray);
+   await stoogehelper(arr,l + t,h,visualiseArray);
+   await stoogehelper(arr,l,h - t,visualiseArray);
+  }
 }
