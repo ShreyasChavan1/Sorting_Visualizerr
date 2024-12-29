@@ -38,12 +38,12 @@
 
 
 .card {
-    position: relative; /* Added */
+    position: relative; 
     margin: 4vw;
     background-color: #3a3a3a;
     color: whitesmoke;
     max-width: 900px;
-    z-index: 0; /* Ensure .card content appears above the pseudo-elements */
+    z-index: 0; 
 }
 @property --angle{
     syntax: "<angle>";
@@ -62,7 +62,7 @@
     z-index: -1;
     padding: 3px;
     border-radius: 10px;
-    animation: spin 3s linear infinite;
+    animation: spin 2s linear infinite;
 }
 
 .card::before {

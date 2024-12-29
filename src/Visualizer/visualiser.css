@@ -45,7 +45,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 9px;
+  margin-top: -3px;
   margin-bottom: 0;
 }
 .algoname{
@@ -57,20 +57,25 @@
 }
 .algoname p{
   font-size: 50px;
+  margin-top: 33px;
 }
 .controls{
     margin-top: 60px;
     display: flex;
     justify-content: right;
+    align-items: baseline;
+    margin-top: 45px;
     padding: 8px;
 }
-.btnn{
-  background-color: #ffffff00; 
+.btnn {
+  background-color: transparent;
   border-radius: 5px;
   border: none;
   margin-left: 2px;
-  height: 5px;
+  height: 5px; 
+  position: relative;
 }
+
 .slider_div{
   background-color: #ffffff00;
     display: flex;

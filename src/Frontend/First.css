@@ -37,9 +37,7 @@
   overflow: hidden;
   animation: typing 3s steps(11) , cursor .4s step-end infinite alternate;
 }
-.titlename:hover{
-  animation: typing 3s steps(12) , cursor .4s step-end infinite alternate;
-}
+
 
 @keyframes cursor {
   50% {border-color: transparent;}

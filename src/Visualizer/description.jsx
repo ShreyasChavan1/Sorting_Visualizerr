@@ -96,7 +96,7 @@ const Description = () => {
                                 <pre>
                                     <code >
                                         <div style={{ display: "block", textAlign: "left" ,color:"cyan"}}
-                                            className={`language-${lang}`}
+                                            className="language"
                                             dangerouslySetInnerHTML={{
                                                 __html: codes[lang],
                                             }}
