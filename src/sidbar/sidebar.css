@@ -8,13 +8,16 @@
   flex-direction: column; 
   padding: 20px 10px;
   box-sizing: border-box;
-  margin-top: 50px;
+  margin-top: 40px;
   left: 0;
   overflow-y: auto;
   z-index: 10;
   position: fixed; 
   top: 0; 
   height: 100vh 
+}
+a {
+  text-decoration: none;
 }
 
 
@@ -35,6 +38,7 @@
   margin: 0px 0;
   color: #fff;
   font-size: 18px;
+  text-decoration-line: none;
 }
 
 .sidebar img {

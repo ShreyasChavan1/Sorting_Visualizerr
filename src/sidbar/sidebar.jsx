@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './sidebar.css';
 import { assets } from '../assets/assetss';
 import { context } from '../backend/context';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const {selectedAlgo,setSelectedAlgo} = useContext(context);
@@ -9,13 +10,13 @@ const Sidebar = () => {
     <div className="sidebar">
   <div className="home">
     <img src={assets.home} alt="Home" />
-    <p>Home</p>
+    <Link to='/'><p>Home</p></Link>
   </div>
   <hr />
   <div className="sorts">
     <div className="Second">
       <img src={assets.sort} alt="Home" />
-      <p>Sorts</p>
+      <Link to='/sorts'><p>Sorts</p></Link>
     </div>
     <p className="logarithmic">LOGARITHMIC</p>
     <ul>

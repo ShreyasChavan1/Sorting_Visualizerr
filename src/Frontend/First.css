@@ -17,21 +17,39 @@
 .main {
   min-height: 100vh;
   flex: 1; 
-  /* background-color: #23242a;  */
-  
-
   padding: 20px;
   overflow-y: auto; 
-  display: flex;
+  display: inline-flex;
   justify-content: end;
   align-items: center;
   color: white;
 }
-.main .titlename{
+.title{
+  display: inline-block;
+}
+.titlename{
   font-size: 100px;
   font-weight: bold;
   margin-right: 50px;
+  border-right: 5px solid;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(11) , cursor .4s step-end infinite alternate;
 }
+.titlename:hover{
+  animation: typing 3s steps(12) , cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+  50% {border-color: transparent;}
+}
+
+@keyframes typing {
+  from {width: 0;}
+  to {width: 100;}
+}
+
 .animation::-webkit-scrollbar{
   display: none;
 }

@@ -37,15 +37,51 @@
 }
 
 
-.card{
-    margin: 4vw ;
+.card {
+    position: relative; /* Added */
+    margin: 4vw;
     background-color: #3a3a3a;
     color: whitesmoke;
     max-width: 900px;
+    z-index: 0; /* Ensure .card content appears above the pseudo-elements */
 }
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.card::after, .card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),transparent 20%,#EA8A09,#7C1252);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: spin 3s linear infinite;
+}
+
+.card::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+
 .card-text{
     background-color: #161616;
-
     padding: 10px;
 }
 .nav-item{
@@ -54,7 +90,7 @@
 .nav-link{
     background-color: #353535;
     margin-right: 2px;
-    color: #D15C1F;
+    color: #ff6b1b;
 }
 .nav-link:hover{
     border: none;
@@ -70,10 +106,15 @@ td, th {
     padding: 8px; 
     font-size: 18px; 
     text-align: left; 
+    position: relative;
   }
 tr:not(:last-child) {
 border-bottom: 1px  solid #D3D3D3;
 }
+tr:hover {
+    box-shadow: 0 0 10px 5px rgba(211, 211, 211, 0.5);
+    transition: box-shadow 0.3s ease-in-out;
+  }
 td:not(:last-child), th:not(:last-child) {
 border-right: 1px solid #D3D3D3;
 }

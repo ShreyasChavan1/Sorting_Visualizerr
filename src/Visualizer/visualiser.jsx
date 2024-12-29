@@ -7,6 +7,8 @@ import * as Algorithms from './Algorithms';
 import Footer from '../footer/footer';
 import { useRef } from 'react';
 import Description from './description';
+import { useParams } from 'react-router-dom';
+import { assets } from '../assets/assetss';
 
 const Visualiser = () => {
   const [array, setArray] = useState([]);
@@ -17,6 +19,8 @@ const Visualiser = () => {
   const stopRef = useRef(false);
   const [color,setColor] = useState([]);
   const { extended , selectedAlgo } = useContext(context);
+
+  const params = useParams();
   
   useEffect(() => {
     resetArray();
@@ -94,6 +98,52 @@ const Visualiser = () => {
       <Naavbar />
       {extended && <Sidebar />}
       <div className="bg">
+        <div className="sortop">
+
+          <div className="algoname">
+            <p>{selectedAlgo}</p>
+          </div>
+          <div className="controls">
+            <button className="btnn" onClick={() => resetArray()} disabled={sorting}><img src ={assets.shuffle}/></button>
+            <div className="slider_div">
+              <input 
+                onChange={(e) => setSize(Number(e.target.value))} 
+                type="range" 
+                id="slider" 
+                className="slider" 
+                min={selectedAlgo === "Bitonicsort" ? 16 : 10} 
+                max={selectedAlgo === "Bitonicsort" ? 512 :500} 
+                value={size}
+                step={selectedAlgo === "Bitonicsort" ? 16 : 1}
+                disabled={sorting}
+              />
+              <span>Elements: {size}</span>
+            </div>
+            <div className="slider_div">
+              <input 
+                onChange={(e) => setSortingSpeed(Number(e.target.value))} 
+                type="range" 
+                id="speed-slider" 
+                className="slider" 
+                min="5" 
+                max="2000" 
+                value={sortingSpeed}
+                disabled={sorting}
+              />
+              <span>Time: {sortingSpeed}ms</span>
+            </div>
+            <button 
+              className="btnn" 
+              disabled={sorting}
+              onClick={() => startSorting()} 
+            >
+              <img src={assets.soort} />
+            </button>
+            <button className="btnn" onClick={togglestop} > Stop </button>
+            <button className="btnn" onClick={reversearray} disabled={sorting}> rev </button>
+          </div>
+        </div>
+
         <div className="graphs">
           {array.map((i, ind) => (
             <div
@@ -102,51 +152,11 @@ const Visualiser = () => {
               style={{
                 height: `${i * 0.8}px`,
                 width: `${barWidth}px`,
-                
               }}
             ></div>
           ))}
         </div>
-        {/* <hr className="divider" /> */}
-        <div className="controls">
-          <button className="btnn" onClick={() => resetArray()} disabled={sorting}>Generate New</button>
-          <div className="slider_div">
-            <input 
-              onChange={(e) => setSize(Number(e.target.value))} 
-              type="range" 
-              id="slider" 
-              className="slider" 
-              min={selectedAlgo === "Bitonicsort" ? 16 : 10} 
-              max={selectedAlgo === "Bitonicsort" ? 512 :500} 
-              value={size}
-              step={selectedAlgo === "Bitonicsort" ? 16 : 1}
-              disabled={sorting}
-            />
-            <span>Elements: {size}</span>
-          </div>
-          <div className="slider_div">
-            <input 
-              onChange={(e) => setSortingSpeed(Number(e.target.value))} 
-              type="range" 
-              id="speed-slider" 
-              className="slider" 
-              min="5" 
-              max="2000" 
-              value={sortingSpeed}
-            />
-            <span>Time: {sortingSpeed}ms</span>
-          </div>
-          <button 
-            className="btnn" 
-            disabled={sorting}
-            onClick={() => startSorting()} 
-            style={{ marginLeft: '50px' }}
-          >
-            {selectedAlgo}
-          </button>
-          <button className="btnn" onClick={togglestop} style={{ marginLeft: '40px' }}> Stop </button>
-          <button className="btnn" onClick={reversearray} style={{ marginLeft: '40px' }}> rev </button>
-        </div>
+        
       </div>
       <Description/>
       <Footer/>

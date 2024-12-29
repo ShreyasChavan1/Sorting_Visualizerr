@@ -5,6 +5,7 @@ import './First.css'; // Add styles for layout
 import { context } from '../backend/context';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Footer from '../footer/footer';
+import { Link } from 'react-router-dom';
 
 const First = () => {
   const { extended } = useContext(context);
@@ -16,7 +17,9 @@ const First = () => {
       <div className="content">
         {extended ? <Sidebar /> : null}
         <div className="main">
+          <div className="title">
             <p className='titlename'>LET'S SORT</p> 
+          </div>
         </div>
       </div>
       <div className="About">
@@ -53,7 +56,7 @@ const First = () => {
           Sorting algorithms can be difficult to understand and it's easy to get confused. We believe visualizing sorting algorithms can be a great way to better understand their functioning while having fun!
           </p>
         <div className="d-flex justify-content-center align-items-center">
-          <button type="button" className="btn btn-info">Sorts</button>
+          <Link to = '/sorts'><button type="button" className="btn btn-info">Sorts</button></Link>
         </div>
         </div>
         </div>
