@@ -1,9 +1,10 @@
+
 .bg{
-    background-image: url(../assets/sort1.jpg);
+    /* background-image: url(../assets/sort1.jpg);
     background-position: left;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   height: 100vh;    
 }
 .graphs{
@@ -36,11 +37,7 @@
   .graph.green{
     background: linear-gradient(0deg, rgb(36, 229, 18) 0%, rgba(58,12,29,1) 100%);
   }
-/* .divider{
-    margin: 0px 0px;
-    height: 5px;
-    background-color: #19ddeb56;
-} */
+
 .sortop{
   display: flex;
   justify-content: space-between;
@@ -68,11 +65,12 @@
     padding: 8px;
 }
 .btnn {
-  background-color: transparent;
+  background-color: rgb(173, 48, 121);
   border-radius: 5px;
   border: none;
-  margin-left: 2px;
-  height: 5px; 
+  margin-left: 5px;
+  height: 46px; 
+  width: 57px;
   position: relative;
 }
 
@@ -81,7 +79,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 2px;
+    margin-left: 5px;
     align-items: center;
 }
 .slider_div span{
@@ -92,3 +90,161 @@
 .slider{
     width: 200px;
 }
+
+
+/* css for range from google !! */
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 200px;
+    background-color: transparent;
+
+    &:focus {
+      outline-color: #f8b195;
+    }
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: rgb(246, 114, 128);
+    background: -webkit-linear-gradient(
+      left,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#f67280",
+      endColorstr="#355c7d",
+      GradientType=1
+    );
+  }
+
+  input[type="range"]::-moz-range-track {
+    -moz-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: rgb(246, 114, 128);
+    background: -moz-linear-gradient(
+      left,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#f67280",
+      endColorstr="#355c7d",
+      GradientType=1
+    );
+  }
+  
+  input[type="range"]::-ms-track {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: rgb(246, 114, 128);
+    background: -moz-linear-gradient(
+      left,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      left,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(246, 114, 128, 1) 0%,
+      rgba(192, 108, 132, 1) 50%,
+      rgba(53, 92, 125, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#f67280",
+      endColorstr="#355c7d",
+      GradientType=1
+    );
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid #f8b195;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  bottom: 8px;
+  background: #222
+    url("http://codemenatalie.com/wp-content/uploads/2019/09/slider-thumb.png")
+    center no-repeat;
+  background-size: 50%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+}
+
+
+  input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #f8b195;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 8px;
+    background: #222
+      url("http://codemenatalie.com/wp-content/uploads/2019/09/slider-thumb.png")
+      center no-repeat;
+    background-size: 50%;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  input[type="range"]::-ms-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #f8b195;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 8px;
+    background: #222
+      url("http://codemenatalie.com/wp-content/uploads/2019/09/slider-thumb.png")
+      center no-repeat;
+    background-size: 50%;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }

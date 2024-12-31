@@ -3,16 +3,19 @@ import Naavbar from '../component/navbar';
 import Sidebar from '../sidbar/sidebar';
 import './First.css'; // Add styles for layout
 import { context } from '../backend/context';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Footer from '../footer/footer';
 import { Link } from 'react-router-dom';
+import VantaBackground from '../bg/vanta';
 
 const First = () => {
   const { extended } = useContext(context);
 
   return (
-
-    <div className="layout">
+    <>
+      <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1}}>
+        <VantaBackground/>
+      </div>
+    <div className="layout" >
       <Naavbar />
       <div className="content">
         {extended ? <Sidebar /> : null}
@@ -56,12 +59,13 @@ const First = () => {
           Sorting algorithms can be difficult to understand and it's easy to get confused. We believe visualizing sorting algorithms can be a great way to better understand their functioning while having fun!
           </p>
         <div className="d-flex justify-content-center align-items-center">
-          <Link to = '/sorts'><button type="button" className="btn btn-info">Sorts</button></Link>
+          <Link to = '/sorts'><button type="button" className="bton">Sorts</button></Link>
         </div>
         </div>
         </div>
         <Footer/>
     </div>
+    </>
   );
 };
 

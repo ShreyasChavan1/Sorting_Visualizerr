@@ -8,7 +8,7 @@ import Footer from '../footer/footer';
 import { useRef } from 'react';
 import Description from './description';
 import { useParams } from 'react-router-dom';
-import { assets } from '../assets/assetss';
+import VantaBackground2 from '../bg/bg2';
 
 const Visualiser = () => {
   const [array, setArray] = useState([]);
@@ -95,6 +95,9 @@ const Visualiser = () => {
   const barWidth = Math.max(Math.floor(containerWidth / array.length), 2);
   return (
     <>
+    <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1}}>
+      <VantaBackground2/>
+    </div>
       <Naavbar />
       {extended && <Sidebar />}
       <div className="bg">
@@ -104,7 +107,7 @@ const Visualiser = () => {
             <p>{selectedAlgo}</p>
           </div>
           <div className="controls">
-            <button className="btnn" onClick={() => resetArray()} disabled={sorting}><img src ={assets.shuffle}/></button>
+            <button className="btnn" onClick={() => resetArray()} disabled={sorting}>New</button>
             <div className="slider_div">
               <input 
                 onChange={(e) => setSize(Number(e.target.value))} 
@@ -137,7 +140,7 @@ const Visualiser = () => {
               disabled={sorting}
               onClick={() => startSorting()} 
             >
-              <img src={assets.soort} />
+              Sort
             </button>
             <button className="btnn" onClick={togglestop} > Stop </button>
             <button className="btnn" onClick={reversearray} disabled={sorting}> rev </button>
