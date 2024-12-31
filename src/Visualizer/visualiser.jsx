@@ -95,7 +95,7 @@ const Visualiser = () => {
   const barWidth = Math.max(Math.floor(containerWidth / array.length), 2);
   return (
     <>
-    <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1}}>
+    <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1,display:'flex',flex:1}}>
       <VantaBackground2/>
     </div>
       <Naavbar />
@@ -161,6 +161,7 @@ const Visualiser = () => {
         </div>
         
       </div>
+      <div className="divider"></div>
       <Description/>
       <Footer/>
     </>
