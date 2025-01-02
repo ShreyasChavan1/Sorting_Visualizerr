@@ -1,9 +1,10 @@
 
 .sidebar {
-  width: 250px;
-  background-color:#2c2c2c9d;
-  color: white;
+  width: 230px;
+  background-color:#00000085;
+  color: antiquewhite;
   display: flex;
+  flex: 1;
   flex-direction: column; 
   padding: 20px 10px;
   box-sizing: border-box;
@@ -17,12 +18,15 @@
   box-shadow: 0px 0px 8px rgb(19, 19, 19);
   animation: slide-in .3s ease;
   }
+  .sidebar::-webkit-scrollbar{
+    display: none;
+  }
 @keyframes slide-in {
   0%{
     width: 0px;
   }
   100%{
-    width: 250px;;
+    width: 230px;;
   }
 }
 .sidebar ul{
@@ -38,7 +42,8 @@
 .sidebar ul li:hover{
   transform: scale(1.05);
   border-radius: 5px;
-  transition: color .4s ease;
+  transition: .4s ease;
+  color: rgb(173, 48, 121);
 }
 .sidebar ul li::after{
   content: ' ';
@@ -66,12 +71,12 @@
   height: 37px; 
   position: absolute;
   top: 2px;
-  left: 169px;
+  left: 153px;
 }
 .sidebar ul li:hover::before{
   background-color: cyan;
   animation:vert .3s ease;
-  animation: name duration timing-function delay iteration-count direction fill-mode;
+
 }
 
 @keyframes vert {
@@ -87,8 +92,55 @@
 }
 a {
   text-decoration: none;
-  color: white;
+  color: antiquewhite;
 }
+
+.sorts{
+  display: none;
+  margin-left: 18%;
+  margin-top: -9%;
+}
+.sorts ul{
+  padding: 0;
+}
+.sorts span{
+  font-weight: 600;
+  margin: 0px 0;
+  color: #bbb6b6;
+  font-size: 15px;
+  padding: 0;
+}
+.sorts ul li{
+  font-size: 14px;
+}
+.sorts ul li:hover{
+  color: black;
+}
+.sorts ul li::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -200%; 
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 200, 200); 
+  transition: left 0.4s ease; 
+  z-index: -1;
+  border-radius:10px ;
+}
+.sorts ul li:hover::after{
+  background-color: transparent;
+}
+.sorts ul li:hover::before{
+  left: 0;
+}
+.visible {
+  display: block;
+  
+}
+
+
+
   /* 
 a {
   text-decoration: none;

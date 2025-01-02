@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './sidebar.css';
-import { assets } from '../assets/assetss';
 import { context } from '../backend/context';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const {selectedAlgo,setSelectedAlgo} = useContext(context);
+  const [submenu,setSubmenu] = useState(false);
   return (
     <div className="sidebar">
       <ul className='list'>
@@ -13,11 +13,42 @@ const Sidebar = () => {
           <i className='fas fa-home'></i>
           <Link to='/'><span>Home</span></Link>
         </li>
-        <li className='name' style={{marginLeft:'4px'}}>
+        <hr />
+        <li className='name' style={{marginLeft:'4px'}} onClick={()=>setSubmenu(prev=>!prev)}>
         <i className='fas fa-sort'></i>
         <Link to='/sorts'><span>Sorts</span></Link>
         </li>
       </ul>
+        <div className={`sorts ${submenu ? "visible" : ""}`}>
+            <span className="logarithmic">LOGARITHMIC</span>
+            <ul>
+              <li onClick={() => setSelectedAlgo('Quicksort')}>Quick Sort</li>
+              <li onClick={() => setSelectedAlgo('Mergesort')}>Merge Sort</li>
+              <li onClick={() => setSelectedAlgo('Heapsort')}>Heap Sort</li>
+            </ul>
+
+            <span className="quadratic">QUADRATIC</span>
+            <ul>
+              <li onClick={() => setSelectedAlgo('Bubblesort')}>Bubble Sort</li>
+              <li onClick={() => setSelectedAlgo('Shakersort')}>Shaker Sort</li>
+              <li onClick={() => setSelectedAlgo('Selectionsort')}>Selection Sort</li>
+              <li onClick={() => setSelectedAlgo('Insertionsort')}>Insertion Sort</li>
+              <li onClick={() => setSelectedAlgo('Pancakesort')}>Pancakesort</li>
+              <li onClick={() => setSelectedAlgo('Oddevensort')}>Odd even sort</li>
+            </ul>
+
+            <span className="weird">WEIRD</span>
+            <ul>
+              <li onClick={() => setSelectedAlgo('Bitonicsort')}>Bitonic Sort</li>
+              <li onClick={() => setSelectedAlgo('Shellsort')}>Shell Sort</li>
+              <li onClick={() => setSelectedAlgo('Radixsort')}>Radix Sort</li>
+              <li onClick={() => setSelectedAlgo('Combsort')}>Comb Sort</li>
+              <li onClick={() => setSelectedAlgo('Bongosort')}>Bongo Sort</li>
+              <li onClick={() => setSelectedAlgo('Stoogesort')}>Stooge Sort</li>
+            </ul>
+        </div>
+
+        
     </div>
   );
 };
