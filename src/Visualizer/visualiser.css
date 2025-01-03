@@ -1,10 +1,10 @@
 
 .bg{
-    /* background-image: url(../assets/sort1.jpg);
+    background-image: url(../assets/sort1.jpg);
     background-position: left;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed; */
+  background-attachment: fixed;
   height: 100vh;    
 }
 .graphs{
@@ -65,13 +65,14 @@
     padding: 8px;
 }
 .btnn {
-  background-color: rgb(173, 48, 121);
   border-radius: 5px;
   border: none;
   margin-left: 5px;
   height: 40px; 
   width: 57px;
+  z-index: 0;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .btnn::after,.btnn::before{
   content: ' ';
@@ -82,21 +83,19 @@
   top: 0;
   left: 0;
   z-index: -1;
-  transition: translate .3s ease;
+
+  background-color: rgb(173, 48, 121);
 }
 .btnn:hover{
+  transform: scale(1.03);
+  border: .5px solid cyan;
   color: cyan;
 }
 
-.btnn:hover::after{
-  background-color: cyan;
-  /* translate: 2px 2px; */
-  transform: scale(1.03);
-
-}
 .btnn:hover::before{
   background-color: cyan;
-  filter: blur(.7rem);
+
+  filter: blur(.5rem);
 }
 
 

@@ -52,6 +52,7 @@
   position: absolute;
   top: 37px;
   left: 5px;
+  transition: left .4s ease;
 }
 .sidebar ul li:hover::after{
   background-color: cyan;
@@ -72,11 +73,11 @@
   position: absolute;
   top: 2px;
   left: 153px;
+  transition: top .4s ease;
 }
 .sidebar ul li:hover::before{
   background-color: cyan;
   animation:vert .3s ease;
-
 }
 
 @keyframes vert {
