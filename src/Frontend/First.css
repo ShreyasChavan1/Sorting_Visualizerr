@@ -17,7 +17,6 @@
   flex: 1; 
 }
 .main,
-.About_sort,
 .title {
   background: rgba(212, 1, 1, 0); /* Optional: semi-transparent background for readability */
   padding: 10px;
@@ -66,33 +65,68 @@
     margin-block-start: 0.83em;
     margin-block-end: 0.83em;
     font-weight: bold;
+    font-size: 30px;
+  text-align: center;
+  padding: 5px;
+  color:cyan;
 }
 .layout .About_sort{
   color: rgb(251, 251, 251);
-  margin-right: 5vw;
-  margin-left: 5vw;
-    padding-right: 5vw;
-    /* padding-left: 5vw; */
-    font-size: 17px;
-    max-width: 70vw;
-    position: relative;
-    margin-bottom: 20px;
-    transition: color 0.3s ease, transform 0.3s ease;
+  padding: 2vw;
+  /* padding-left: 5vw; */
+  font-size: 17px;
+  max-width: 60vw;
+  position: relative;
+ 
+  transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .About {
   position: relative; 
   /* background: linear-gradient(
       to bottom,
-      rgb(0, 0, 0), 
+      rgba(0, 0, 0, 0.756), 
       rgba(0, 0, 0, 0)    
-    ); */
-  /* background-position: left;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;  */
-  z-index: 1;
+    );  */
+  background-color: rgb(31, 31, 31);
+  background-position: left;
+  display: inline-block;
+  max-width: 55vw;
+  margin-right: 5vw;
+  margin-left: 6vw;
+  margin-bottom: 20px;
+
   padding: 20px; 
+  border-radius: 10px;
 }
+@property --angle{
+  syntax: "<angle>";
+  initial-value:0deg ;
+  inherits: false;
+}
+.About::after{
+  content: ' ';
+  top: -4px;
+    left: -3px;
+  width: 101%;
+  height: 101%;
+  border-radius: 8px;
+ 
+  position: absolute;
+  z-index: -1;
+  background: conic-gradient(from var(--angle),transparent 10%,cyan);
+  animation: cir 2s linear infinite;
+}
+@keyframes cir {
+  from{
+    --angle:0deg;
+  }
+  to{
+    --angle:360deg;
+  }
+}
+
+
 
 .bton{
   position: relative;

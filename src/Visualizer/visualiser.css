@@ -87,31 +87,19 @@
 .btnn:hover{
   color: cyan;
 }
-@property --angle{
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
+
 .btnn:hover::after{
-  background-image: conic-gradient(from var(--angle),transparent 20%,cyan);
+  background-color: cyan;
   /* translate: 2px 2px; */
-  transform: scale(1.05);
-  animation: spin 2s linear infinite;
+  transform: scale(1.03);
+
 }
 .btnn:hover::before{
-  background-image: conic-gradient(from var(--angle),transparent 20%,cyan);
+  background-color: cyan;
   filter: blur(.7rem);
-  animation: spin 2s linear infinite;
 }
 
-@keyframes spin {
-  from {
-      --angle: 0deg;
-  }
-  to {
-      --angle: 360deg;
-  }
-}
+
 
 .slider_div{
   background-color: #ffffff00;

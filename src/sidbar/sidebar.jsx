@@ -18,6 +18,7 @@ const Sidebar = () => {
         <i className='fas fa-sort'></i>
         <Link to='/sorts'><span>Sorts</span></Link>
         </li>
+        
       </ul>
         <div className={`sorts ${submenu ? "visible" : ""}`}>
             <span className="logarithmic">LOGARITHMIC</span>
@@ -47,7 +48,7 @@ const Sidebar = () => {
               <li onClick={() => setSelectedAlgo('Stoogesort')}>Stooge Sort</li>
             </ul>
         </div>
-
+      <hr />
         
     </div>
   );

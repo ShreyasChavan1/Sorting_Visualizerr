@@ -149,6 +149,8 @@ const Visualiser = () => {
 
         <div className="graphs">
           {array.map((i, ind) => (
+            <>
+            
             <div
             className={`graph ${color[ind]}`}
               key={ind}
@@ -157,6 +159,7 @@ const Visualiser = () => {
                 width: `${barWidth}px`,
               }}
             ></div>
+            </>
           ))}
         </div>
         
