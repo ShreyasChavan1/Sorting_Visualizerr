@@ -6,6 +6,7 @@ import ContextProvider from './backend/context.jsx'
 import {createBrowserRouter , RouterProvider} from 'react-router-dom'
 import Visualiser from './Visualizer/visualiser.jsx'
 import First from './Frontend/First_page.jsx'
+import Compare from './compare/compare.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path:'/sorts',
     element:<Visualiser/>
+  }
+  ,{
+    path:'/compare',
+    element:<Compare/>
   }
 ]);
 

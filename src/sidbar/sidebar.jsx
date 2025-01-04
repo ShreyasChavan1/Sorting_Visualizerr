@@ -14,12 +14,16 @@ const Sidebar = () => {
           <Link to='/'><span>Home</span></Link>
         </li>
         <hr />
-        <li className='name' style={{marginLeft:'4px'}} onClick={()=>setSubmenu(prev=>!prev)}>
+        <li className='name' style={{marginLeft:'4px'}} >
         <i className='fas fa-sort'></i>
         <Link to='/sorts'><span>Sorts</span></Link>
+        {submenu?  
+        <i onClick={()=>setSubmenu(prev=>!prev)} style={{marginLeft:'2vw'}} class="fa-solid fa-angle-up"></i>
+        :<i onClick={()=>setSubmenu(prev=>!prev)} style={{marginLeft:'2vw'}} class="fa-solid fa-angle-down"></i>}
+        
         </li>
         
-      </ul>
+      
         <div className={`sorts ${submenu ? "visible" : ""}`}>
             <span className="logarithmic">LOGARITHMIC</span>
             <ul>
@@ -49,6 +53,12 @@ const Sidebar = () => {
             </ul>
         </div>
       <hr />
+
+      <li className='name' style={{marginLeft:'4px'}}>
+      <i class="fa-solid fa-code-compare"></i>
+        <Link to='/compare'><span>Compare</span></Link>
+        </li>
+      </ul>
         
     </div>
   );

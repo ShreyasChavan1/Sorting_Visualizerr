@@ -91,12 +91,12 @@
   background-color: rgb(31, 31, 31);
   background-position: left;
   display: inline-block;
-  max-width: 55vw;
+  max-width: 61vw;
   margin-right: 5vw;
   margin-left: 6vw;
   margin-bottom: 20px;
 
-  padding: 20px; 
+  /* padding: 20px;  */
   border-radius: 10px;
 }
 @property --angle{

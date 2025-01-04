@@ -1,5 +1,6 @@
 .custom-navbar {
-    background-color: #30313A; 
+    background-color: #3a3a3a00; 
+    /* background-color:#161616; */
     padding: 10px 20px;
     z-index: 1000;
     position:fixed;

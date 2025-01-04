@@ -28,11 +28,11 @@ const Footer = () => {
                               textDecoration: 'none',
                               color: '#afafaf',
                           }}
-                          href="https://github.com/your-profile"
+                          href="https://github.com/ShreyasChavan1"
                           target="_blank"
                           rel="noopener noreferrer"
                       >
-                          <img src="" title="GitHub" alt="GitHub" />
+                          <i class="fa-brands fa-github"></i>
                           <span style={{ paddingLeft: '5px' }}>GitHub</span>
                       </a>
                       <a
@@ -42,17 +42,17 @@ const Footer = () => {
                               textDecoration: 'none',
                               color: '#afafaf',
                           }}
-                          href="https://wikipedia.org"
+                          href="https://wikipedia.org/wiki/Sorting_algorithm"
                           target="_blank"
                           rel="noopener noreferrer"
                       >
-                          <img src="" title="Wiki" alt="Wikipedia" />
+                          <i class="fa-brands fa-wikipedia-w"></i>
                           <span style={{ paddingLeft: '5px' }}>Wikipedia</span>
                       </a>
                   </div>
         </div>
         <div className="credits">
-            <span>Want to create websites with me? checkout <a href="www.google.com">google</a>!</span>
+            <span>Want to create websites with me? checkout <a href="https://www.google.co.in/search?q=sorting+visualizer" target='_blank'>google</a>!</span>
         </div>
     </div>
    </>
