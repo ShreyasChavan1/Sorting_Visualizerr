@@ -8,14 +8,51 @@
   min-height: 100vh;  
   padding: 1vh;
 }
-.box{
+.compare{
+    display: flex;
+    min-width: 50vw;
+    min-height:70vh ;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    margin-top: 5vh;
+}
+.graph1,.graph2{
+    min-width: 47vw;
+    min-height:67vh;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.graph1{
+    border-right: 2px solid white;
+}
+.bars{
+    transition: height 0.3s ease; 
+    background-color: cyan;
+    display: inline-block;
+    margin: 0.5px;
+}
+
+
+
+
+
+
+
+
+
+
+/* .box{
     display: inline-block;
     position: relative;
     width: 13.5vw;
     height: 22.5vh;
     margin: 0.5vh;
 }
-/* 1896x874 */
+
 .box::before,.box::after{
     content: ' ';
     width: 100%;
@@ -27,14 +64,15 @@
     border-radius: 10px;
     transition: background-color .2s ease, transform .2s ease;
 }
-/* before is begind the after hence oncly changed before and added filter blur */
+
 .box:hover::before{ 
     z-index: 1; 
     background-color: cyan;
+    transform: scale(0.9);
     filter: blur(.8rem);
 }
 .box:hover::after{
     z-index: 1;
     background-color: black;
-    transform: scale(1.05);
-}
+    transform: scale(0.9);
+} */

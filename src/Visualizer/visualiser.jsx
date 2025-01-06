@@ -36,7 +36,7 @@ const Visualiser = () => {
   
   const randomFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-  const visualiseArray = async (index, value, index2, value2, isComparing = false) => {
+   const visualiseArray = async (index, value, index2, value2, isComparing = false) => {
     return new Promise((resolve) => {
         if(stopRef.current){
           resolve();

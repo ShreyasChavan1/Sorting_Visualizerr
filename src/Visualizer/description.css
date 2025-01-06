@@ -1,14 +1,17 @@
 .dec{
-    background-image: url(../assets/sort1.jpg);
+    /* background-image: url(../assets/sort1.jpg); */
+    background: linear-gradient(184deg, rgb(28, 28, 28) 23%, rgba(0,84,84,1) 100%);
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
         background-position: left;
         background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        /* background-repeat: no-repeat;
+        background-attachment: fixed; */
         display: flex;
         flex-direction: column;
         /* align-items: center;
         justify-content: center; */
         /* flex: 1; */
+        
         padding: 30px;
         color: antiquewhite;
 
@@ -21,7 +24,7 @@
     /* align-items: flex-start; */
 }
 .top .information{
-    margin: auto;
+    margin-right: 7.5vw;
     padding-right: 3vw;
     font-size: 17px;
     max-width: 950px;
@@ -109,14 +112,14 @@ td, th {
     position: relative;
   }
 tr:not(:last-child) {
-border-bottom: 1px  solid #D3D3D3;
+border-bottom: 1px  solid #D17F3C;
 }
 tr:hover {
     box-shadow: 0 0 10px 5px rgba(211, 211, 211, 0.5);
     transition: box-shadow 0.3s ease-in-out;
   }
 td:not(:last-child), th:not(:last-child) {
-border-right: 1px solid #D3D3D3;
+border-right: 1px solid #D17F3C;
 }
 
 

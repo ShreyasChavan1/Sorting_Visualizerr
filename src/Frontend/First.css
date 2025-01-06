@@ -91,9 +91,9 @@
   background-color: rgb(31, 31, 31);
   background-position: left;
   display: inline-block;
-  max-width: 61vw;
+  max-width: 55vw;
   margin-right: 5vw;
-  margin-left: 6vw;
+  margin-left: 7vw;
   margin-bottom: 20px;
 
   /* padding: 20px;  */
@@ -140,6 +140,7 @@
   color: white;
   border-radius: 5px;
   transition: color .3s ease, transform .3s ease ;
+  
 }
 .bton::before{
   content: ' ';
@@ -161,6 +162,7 @@
   color: black;
   background-color: rgb(59, 255, 255);
   border: .5px solid white;
+  
 }
 
 
