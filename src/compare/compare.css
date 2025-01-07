@@ -18,6 +18,17 @@
     border: 2px solid white;
     margin-top: 5vh;
 }
+.controlls{
+    position: absolute;
+    height: 10vh;
+    width: 80%;
+    background-color: rgb(26, 26, 26);
+    top: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 .graph1,.graph2{
     min-width: 47vw;
     min-height:67vh;
@@ -34,6 +45,7 @@
     background-color: cyan;
     display: inline-block;
     margin: 0.5px;
+    border-radius: 3px;
 }
 
 

@@ -95,7 +95,7 @@ const Description = () => {
                             <div className="card-text">
                                 <pre>
                                     <code >
-                                        <div style={{ display: "block", textAlign: "left" ,color:"cyan"}}
+                                        <div style={{ display: "block", textAlign: "left" ,color:"white"}}
                                             className="language"
                                             dangerouslySetInnerHTML={{
                                                 __html: codes[lang],
