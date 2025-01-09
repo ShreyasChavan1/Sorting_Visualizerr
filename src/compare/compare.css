@@ -47,6 +47,15 @@
     margin: 0.5px;
     border-radius: 3px;
 }
+.bars .red {
+    background-color: red;
+}
+.bars .green {
+    background-color: green;
+}
+.bars .default{
+    background-color: cyan;
+}
 
 
 
