@@ -56,9 +56,13 @@ const Compare = () => {
               if(value !== undefined) newarray2[index] = value;
               if(value2 !== undefined) newarray2[index2] = value2;
 
-              const newColors2 = colors2.map((_,i)=>{
-                i === index || i === index2 ? isComparing ? "red" : "green" : "default";
-              });
+              const newColors2 = newarray2.map((_, i) =>
+                i === index || i === index2
+                  ? isComparing
+                    ? "red"
+                    : "green"
+                  : "default"
+              );
               setColors2(newColors2);
               return newarray2;
             })
@@ -69,10 +73,14 @@ const Compare = () => {
               if(value !== undefined) newarray[index] = value;
               if(value2 !== undefined) newarray[index2] = value2;
 
-              const newColors = colors.map((_,i)=>{
-                i === index || i === index2 ? isComparing ? "red" : "green" : "default";
-              });
-              setColors2(newColors);
+              const newColors = newarray.map((_, i) =>
+                i === index || i === index2
+                  ? isComparing
+                    ? "red"
+                    : "green"
+                  : "default"
+              );
+              setColors(newColors);
               return newarray;
             })
           }
@@ -113,12 +121,21 @@ const Compare = () => {
     <div className="back">
       <div className="compare">
         <div className="controlls">
-          <select name="algos" onChange={(e)=>setAlgo(e.target.value)} id="">
+          <select name="algos" className='algoselector' onChange={(e)=>setAlgo(e.target.value)} id="">
             <option value="Quicksort" >Quicksort</option>
             <option value="Mergesort">Mergesort</option>
             <option value="Heapsort">Heapsort</option>
             <option value="Bubblesort">Bubblesort</option>
+            <option value="Shakersort">Shakersort</option>
             <option value="Selectionsort">Selectionsort</option>
+            <option value="Insertionsort">Insertionsort</option>
+            <option value="Pancakesort">Pancakesort</option>
+            <option value="Oddevensort">Oddevensort</option>
+            <option value="Shellsort">Shellsort</option>
+            <option value="Radixsort">Radixsort</option>
+            <option value="Combsort">Combsort</option>
+            <option value="Bongosort">Bongosort</option>
+            <option value="Stoogesort">Stoogesort</option>
           </select>
           <button onClick={resetarray}>New</button>
           <input type="range" onChange={(e)=> setSize(Number(e.target.value))} 
@@ -135,12 +152,21 @@ const Compare = () => {
           <button onClick={()=>startsort()}>Sort</button>
           <button onClick={()=>handlestop()}>Stop</button>
           <button onClick={reverse}>Rev</button>
-          <select name="algos" onChange={(e)=>setAlgo2(e.target.value)} id="">
+          <select name="algos" className='algoselector2' onChange={(e)=>setAlgo2(e.target.value)} id="">
             <option value="Quicksort" >Quicksort</option>
             <option value="Mergesort" >Mergesort</option>
             <option value="Heapsort">Heapsort</option>
             <option value="Bubblesort">Bubblesort</option>
+            <option value="Shakersort">Shakersort</option>
             <option value="Selectionsort">Selectionsort</option>
+            <option value="Insertionsort">Insertionsort</option>
+            <option value="Pancakesort">Pancakesort</option>
+            <option value="Oddevensort">Oddevensort</option>
+            <option value="Shellsort">Shellsort</option>
+            <option value="Radixsort">Radixsort</option>
+            <option value="Combsort">Combsort</option>
+            <option value="Bongosort">Bongosort</option>
+            <option value="Stoogesort">Stoogesort</option>
           </select>
         </div>
 
@@ -157,7 +183,7 @@ const Compare = () => {
         <div className="graph2">
         {
               array2.map((i,ind)=>(
-                <div className={`bars ${colors[ind]}`} key={ind}
+                <div className={`bars ${colors2[ind]}`} key={ind}
                 style={{height:`${0.8*i}px`, 
                 width:`${barwidth}px` }}>
                 </div>

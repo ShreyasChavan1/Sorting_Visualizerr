@@ -2,6 +2,9 @@
 export const Mergesort = async (array, visualiseArray) => {
     const auxArray = [...array];
     await mergesortHelper(array, 0, array.length - 1, auxArray, visualiseArray);
+    for (let k = 0; k < array.length; k++) {
+      await visualiseArray(k, array[k], null, null, false); 
+    }
   };
   
   const mergesortHelper = async (mainarray, start, end, aux, visualiseArray) => {
@@ -14,6 +17,8 @@ export const Mergesort = async (array, visualiseArray) => {
     await mergesortHelper(aux, mid + 1, end, mainarray, visualiseArray);
     
     await merge(mainarray, start, mid, end, aux, visualiseArray);
+
+
   };
   
   const merge = async (mainarray, start, mid, end, aux, visualiseArray) => {
@@ -53,6 +58,9 @@ export const Mergesort = async (array, visualiseArray) => {
     let low = 0;
     let high = mainarray.length - 1;
     await quicksorthelper(mainarray, low, high, visualiseArray);
+    for (let k = 0; k < mainarray.length; k++) {
+      await visualiseArray(k, mainarray[k], null, null, false); 
+    }
   };
   
   const quicksorthelper = async (mainarray, low, high, visualiseArray) => {
@@ -111,6 +119,10 @@ export const Heapsort = async(mainarray,visualiseArray)=>{
 
     await visualiseArray(0,mainarray[0],j,mainarray[j],true);
     await heapify(mainarray,j,0,visualiseArray);
+
+  }
+  for (let k = 0; k < mainarray.length; k++) {
+    await visualiseArray(k, mainarray[k], null, null, false); 
   }
 }
 
@@ -155,6 +167,9 @@ export const Bubblesort = async(mainarray,visualiseArray) =>{
     }
     if(!isswaped) break;
   }
+  for (let k = 0; k < mainarray.length; k++) {
+    await visualiseArray(k, mainarray[k], null, null, false); 
+  }
 }
 
 
@@ -179,6 +194,9 @@ export const Selectionsort = async(mainarray,visualiseArray) =>{
       await visualiseArray(i,mainarray[i],min,mainarray[min],true);
     
   }
+  for (let k = 0; k < mainarray.length; k++) {
+    await visualiseArray(k, mainarray[k], null, null, false); 
+  }
 }
 
 
@@ -199,6 +217,9 @@ export const Insertionsort = async(mainarray,visualiseArray)=>{
     }
     mainarray[j + 1]  = key;
     await visualiseArray(j + 1, key, i, mainarray[i], false);
+  }
+  for (let k = 0; k < mainarray.length; k++) {
+    await visualiseArray(k, mainarray[k], null, null, false); 
   }
 }
 
@@ -228,6 +249,9 @@ export const Shakersort = async(mainarray,visualiseArray)=>{
     }
     l++;
   }while(swapped);
+  for (let k = 0; k < mainarray.length; k++) {
+    await visualiseArray(k, mainarray[k], null, null, false); 
+  }
  
 }
 
@@ -272,6 +296,9 @@ export async function Pancakesort(arr, visualiseArray) {
 
       n--;
   }
+  for (let k = 0; k < arr.length; k++) {
+    await visualiseArray(k, arr[k], null, null, false); 
+  }
 }
 
 
@@ -297,6 +324,9 @@ export const Oddevensort = async(mainarray,visualiseArray) =>{
         await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
       }
     }
+  }
+  for (let k = 0; k < mainarray.length; k++) {
+    await visualiseArray(k, mainarray[k], null, null, false); 
   }
 }
 
@@ -328,7 +358,7 @@ export const Bitonicsort = async (arr, visualiseArray) => {
           }
       }
   for (let i = 0; i < n; i++) {
-      await visualiseArray(i, arr[i], undefined, undefined, false); // Force final visualization
+      await visualiseArray(i, arr[i], undefined, undefined, false); 
   }
 };
 

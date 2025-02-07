@@ -18,6 +18,7 @@
     border: 2px solid white;
     margin-top: 5vh;
 }
+
 .controlls{
     position: absolute;
     height: 10vh;
@@ -28,6 +29,20 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+.controlls button{
+  border-radius: 5px;
+  margin: 8px;
+  height: 30px; 
+  width: 45px;
+  position: relative;
+  background-color: transparent;
+  color: white;
+  border: 1px solid cyan;
+  transition: background-color 0.3s ease, color 0.3s ease , transform 0.3s ease;
+}
+.controlls button:hover{
+    transform: scale(1.1);
 }
 .graph1,.graph2{
     min-width: 47vw;
@@ -47,15 +62,31 @@
     margin: 0.5px;
     border-radius: 3px;
 }
-.bars .red {
+.bars.red {
     background-color: red;
 }
-.bars .green {
+.bars.green {
     background-color: green;
 }
-.bars .default{
+.bars.default{
     background-color: cyan;
 }
+.controlls select{
+appearance: none;
+border-radius: 10px;
+  background-color: rgb(48, 48, 48);
+  color: white;
+  padding: 10px;
+  border: none;
+
+}
+.algoselector{
+    margin-right: 9vw;
+}
+.algoselector2{
+    margin-left: 9vw;
+}
+
 
 
 
