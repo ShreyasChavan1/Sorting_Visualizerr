@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizer"
   },
   "dependencies": {
     "@react-spring/parallax": "^9.7.5",
@@ -33,7 +34,6 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
     "vite": "^6.0.1"
-  },
-  "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizer"
+  }
 
 }
