@@ -1,0 +1,32 @@
+.custom-navbar {
+    background-color: #3a3a3a00; 
+    /* background-color:#161616; */
+    padding: 10px 20px;
+    z-index: 1000;
+    position:fixed;
+    height: 40px;
+    width: 100vw;
+    top: 0;
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+
+
+.material-symbols-outlined {
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+.me-2 {
+    margin-right: 0.5rem; 
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }

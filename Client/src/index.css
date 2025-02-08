@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Outfit;
+  /* height: 100%;  */
+}
+
+#root{
+  min-height: 100vh;
+  /* display: flex; */
+  animation: fade-in 1.5s;
+}
+/* @keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100;
+  }
+} */

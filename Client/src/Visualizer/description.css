@@ -1,0 +1,125 @@
+.dec{
+    /* background-image: url(../assets/sort1.jpg); */
+    background: linear-gradient(184deg, rgb(28, 28, 28) 23%, rgba(0,84,84,1) 100%);
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+        background-position: left;
+        background-size: cover;
+        /* background-repeat: no-repeat;
+        background-attachment: fixed; */
+        display: flex;
+        flex-direction: column;
+        /* align-items: center;
+        justify-content: center; */
+        /* flex: 1; */
+        
+        padding: 30px;
+        color: antiquewhite;
+
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* flex: 1; */
+    /* align-items: flex-start; */
+}
+.top .information{
+    margin-right: 7.5vw;
+    padding-right: 3vw;
+    font-size: 17px;
+    max-width: 950px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.top{
+    padding: 30px;
+}
+.top .complexity{
+    max-width: 500px;
+    background: #00000000;
+}
+
+
+.card {
+    position: relative; 
+    margin: 4vw;
+    background-color: #3a3a3a;
+    color: whitesmoke;
+    max-width: 900px;
+    z-index: 0; 
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.card::after, .card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),transparent 20%,#EA8A09,#7C1252);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: spin 2s linear infinite;
+}
+
+.card::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+
+.card-text{
+    background-color: #161616;
+    padding: 10px;
+}
+.nav-item{
+    cursor: pointer;
+}
+.nav-link{
+    background-color: #353535;
+    margin-right: 2px;
+    color: #ff6b1b;
+}
+.nav-link:hover{
+    border: none;
+    color: #D15C1F;
+}
+.act{
+    background-color: #161616;
+}
+
+
+/* table css */
+td, th {
+    padding: 8px; 
+    font-size: 18px; 
+    text-align: left; 
+    position: relative;
+  }
+tr:not(:last-child) {
+border-bottom: 1px  solid #D17F3C;
+}
+tr:hover {
+    box-shadow: 0 0 10px 5px rgba(211, 211, 211, 0.5);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+td:not(:last-child), th:not(:last-child) {
+border-right: 1px solid #D17F3C;
+}
+
+
