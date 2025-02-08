@@ -1,49 +1,51 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Runs only when pushing to the main branch
 
 jobs:
   build:
-    name: Build
+    name: Build Project
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*' # Ensures the latest LTS version
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Install Dependencies
+        run: npm ci  # Faster and recommended over npm install
 
-      - name: Build project
+      - name: Build Project
         run: npm run build
 
-      - name: Upload production-ready build files
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: production-files
-          path: ./dist
+          path: ./dist  # Ensure this matches your build output directory
 
   deploy:
-    name: Deploy
+    name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Download artifact
+      - name: Download Build Files
         uses: actions/download-artifact@v4
         with:
           name: production-files
-          path: ./build
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist  # Ensure the correct build directory
