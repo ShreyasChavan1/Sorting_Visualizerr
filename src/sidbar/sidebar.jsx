@@ -11,7 +11,7 @@ const Sidebar = () => {
       <ul className='list'>
         <li className='name'>
           <i className='fas fa-home'></i>
-          <Link to='/'><span>Home</span></Link>
+          <Link to='/Sorting_Visualizerr'><span>Home</span></Link>
         </li>
         <hr />
         <li className='name' style={{marginLeft:'4px'}} >
