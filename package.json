@@ -1,5 +1,6 @@
 {
   "name": "sort-visualizer",
+  "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizer/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,12 +9,14 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizer"
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist"
   },
   "dependencies": {
     "@react-spring/parallax": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "firebase": "^11.1.0",
+    "gh-pages": "^6.3.0",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.6",
@@ -35,5 +38,4 @@
     "globals": "^15.12.0",
     "vite": "^6.0.1"
   }
-
 }

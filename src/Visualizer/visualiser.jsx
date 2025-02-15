@@ -94,7 +94,7 @@ const Visualiser = () => {
   const containerWidth = 800;
   const barWidth = Math.max(Math.floor(containerWidth / array.length), 2);
   return (
-    <>
+    <div className='parent'>
     {/* <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1,display:'flex',flex:1}}>
       <VantaBackground2/>
     </div> */}
@@ -155,7 +155,7 @@ const Visualiser = () => {
             className={`graph ${color[ind]}`}
               key={ind}
               style={{
-                height: `${i * 0.8}px`,
+                height: `${(i / Math.max(...array)) * 82}vh`,
                 width: `${barWidth}px`,
               }}
             ></div>
@@ -167,7 +167,7 @@ const Visualiser = () => {
       <div className="divider"></div>
       <Description/>
       <Footer/>
-    </>
+    </div>
   );
 };
 

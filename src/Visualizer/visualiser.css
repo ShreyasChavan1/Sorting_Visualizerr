@@ -1,4 +1,6 @@
-
+.parent{
+  overflow-x: hidden;
+}
 .bg{
     background-image: url(../assets/sort1.jpg);
     /* background-color: rgb(26, 26, 26); */
@@ -6,7 +8,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
- 
+
   height: 100vh;    
 }
 .graphs{
@@ -276,3 +278,39 @@
       cursor: grabbing;
     }
   }
+
+
+
+@media (max-width:480px){
+  .algoname p {
+    font-size: 30px;
+    margin-top: 43px;
+    margin-left: -43px;
+}
+.sortop {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+   margin-top: 0px; 
+  margin-bottom: 0;
+}
+.controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: -9px;
+  padding: 8px;
+  flex-wrap: wrap;
+}
+.controls .btnn {
+  height: px;
+  width: 40px;
+}
+.graphs{
+  height: 60vh;
+}
+.graph{
+  margin: 0;
+
+}
+}

@@ -58,7 +58,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle),transparent 20%,#EA8A09,#7C1252);
+    background-image: conic-gradient(from var(--angle),transparent 20%,#FF6B1B);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -122,4 +122,24 @@ td:not(:last-child), th:not(:last-child) {
 border-right: 1px solid #D17F3C;
 }
 
+@media (max-width:480px){
+    .top{
+        flex-direction: column;
+    }
+    .top .information{
+        margin-right: 0;
+        padding-right: 0;
+        font-size: 15px;
+    }
+    td{
+        font-size: 15px;
+    }
+    .card{
+        margin: 10px 0;
+        
+    }
+    .dec{
+        padding: 0;
+    }
+}
 

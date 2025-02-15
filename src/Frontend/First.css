@@ -10,6 +10,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed; 
+  overflow-x: hidden;
 }
   
 .content {
@@ -18,7 +19,7 @@
 }
 .main,
 .title {
-  background: rgba(212, 1, 1, 0); /* Optional: semi-transparent background for readability */
+  background: rgba(212, 1, 1, 0);
   padding: 10px;
   border-radius: 8px;
 }
@@ -166,6 +167,77 @@
 }
 
 
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .titlename {
+    font-size: 8vw;
+    border-right: 2px solid;
+  }
+
+  .About {
+    margin-top: 5vh;
+    max-width: 100%;
+    padding: 10px;
+  }
+  .About::after{
+    display: none;
+  }
+
+  .Heading {
+    font-size: 1.3rem;
+  }
+
+  .bton {
+    width: 65px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titlename {
+    font-size: 10vw;
+    border-right: 1px solid;
+  }
+
+  .About {
+    max-width: 100%;
+    padding: 10px;
+    margin: 0;
+    border-radius: 0px;
+  }
+  .About::before, 
+  .About::after {
+    display: none;
+  }
+  .layout .About_sort{
+    max-width: 89vw;
+    font-size: 15px;
+  }
+
+  .Heading {
+    font-size: 25px;
+    text-align: center;
+    
+  }
+
+  .bton {
+    width: 71px;
+    height: 37px;
+    font-size: 18px;
+  }
+}
  
 
  

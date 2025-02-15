@@ -115,7 +115,7 @@ const Compare = () => {
     const containerwidth = 580;
     const barwidth = Math.max(Math.floor((containerwidth/array.length),2))
   return (
-    <>
+    <div className="whole">
     <Naavbar />
     {extended && <Sidebar />}
     <div className="back">
@@ -192,7 +192,7 @@ const Compare = () => {
         </div>        
       </div>
     </div>
-    </>
+    </div>
   )
 }
 

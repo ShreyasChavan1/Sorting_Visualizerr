@@ -1,3 +1,4 @@
+
 .back{
     /* background-image: url(../assets/sort1.jpg); */
     background-position: left;
@@ -87,7 +88,107 @@ border-radius: 10px;
     margin-left: 9vw;
 }
 
+  /* 🔹 RESPONSIVE DESIGN */
+  /* @media (max-width: 1024px) {
+    .compare {
+      flex-direction: column;
+      width: 95%;
+      min-height: 60vh;
+    }
+    
+    .graph1, .graph2 {
+      width: 100%;
+      min-height: 40vh;
+      border-right: none;
+      border-bottom: 2px solid white;
+    }
+  
+    .controlls {
+      height: auto;
+      flex-direction: column;
+      padding: 10px;
+    }
+    
+    .controlls button {
+      width: 70px;
+      height: 35px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .compare {
+      flex-direction: column;
+      min-height: auto;
+      width: 100%;
+    }
+  
+    .graph1, .graph2 {
+      width: 100%;
+      min-height: 30vh;
+      border-right: none;
+      border-bottom: 2px solid white;
+    }
+  
+    .controlls {
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+  
+    .controlls button {
+      width: 60px;
+      height: 30px;
+      font-size: 0.8rem;
+    }
+  
+    .algoselector, .algoselector2 {
+      margin: 5px 0;
+    }
+  
+    .bars {
+      width: 4%;
+    }
+  } */
+  
+  @media (max-width: 480px) {
+    .compare {
+      flex-direction: column;
+      min-height: auto;
+      width: 100%;
+      border: none;
+    }
+  
+    .graph1, .graph2 {
+      width: 100%;
+      min-height: 25vh;
+      border-bottom: 2px solid white;
+    }
+    .graph1{
+        border-right: none;
+        margin-top: 49vh;
+    }
+  
+    .controlls {
+      padding: 0px;
+      flex-direction: column;
+        height: 46vh;
 
+    }
+  
+    .controlls button {
+      width: 50px;
+      height: 28px;
+      font-size: 0.7rem;
+    }
+  
+    .bars {
+      width: 5%;
+      margin: 0;
+
+    }
+  }
 
 
 
