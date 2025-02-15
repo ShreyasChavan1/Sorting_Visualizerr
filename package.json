@@ -1,6 +1,5 @@
 {
   "name": "sort-visualizer",
-  "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizerr/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizerr/"
   },
   "dependencies": {
     "@react-spring/parallax": "^9.7.5",
