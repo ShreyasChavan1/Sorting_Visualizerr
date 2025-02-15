@@ -10,7 +10,7 @@ import Compare from './compare/compare.jsx'
 
 const router = createBrowserRouter([
   {
-    path:'/',
+    path:'/Sorting_Visualizerr',
     element: <First/>,
   },
   {
