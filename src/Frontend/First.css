@@ -167,7 +167,7 @@
 }
 
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .layout {
     flex-direction: column;
   }
@@ -203,9 +203,9 @@
     height: 30px;
     font-size: 0.8rem;
   }
-}
+} */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .titlename {
     font-size: 10vw;
     border-right: 1px solid;
