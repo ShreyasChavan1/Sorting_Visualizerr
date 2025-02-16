@@ -12,7 +12,7 @@ const First = () => {
 
   return (
     <>
-      <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1}}>
+      <div style={{ position: 'absolute',width:'100%',overflow: 'hidden',zIndex:-1}} className='vantaa'>
         <VantaBackground/>
       </div>
     <div className="layout" >

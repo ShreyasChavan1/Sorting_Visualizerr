@@ -162,18 +162,18 @@ border-radius: 10px;
   
     .graph1, .graph2 {
       width: 100%;
-      min-height: 25vh;
+      /* min-height: 25vh; */
       border-bottom: 2px solid white;
     }
     .graph1{
         border-right: none;
-        margin-top: 49vh;
+        margin-top: 27vh;
     }
   
     .controlls {
       padding: 0px;
-      flex-direction: column;
-        height: 46vh;
+      height: 28vh;
+      flex-wrap: wrap;
 
     }
   

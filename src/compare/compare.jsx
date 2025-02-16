@@ -30,16 +30,16 @@ const Compare = () => {
       setArray2([...newarray]);
     }
 
-    const reverse = async () =>{
-      let n = array.length;
-      let i = 0;
-      while(i < n){
-        [array[i],array[n - 1]] = [array[n-1],array[i]];
-        await visualize(i,array[i],n -1,array[n-1],false);
-        i++;
-        n--;
-      }
-    }
+    // const reverse = async () =>{
+    //   let n = array.length;
+    //   let i = 0;
+    //   while(i < n){
+    //     [array[i],array[n - 1]] = [array[n-1],array[i]];
+    //     await visualize(i,array[i],n -1,array[n-1],false);
+    //     i++;
+    //     n--;
+    //   }
+    // }
 
     const visualize = async(index,value,index2,value2,isComparing = false,isSecond = false) =>{
       return new Promise((resolve)=>{
@@ -137,7 +137,7 @@ const Compare = () => {
             <option value="Bongosort">Bongosort</option>
             <option value="Stoogesort">Stoogesort</option>
           </select>
-          <button onClick={resetarray}>New</button>
+          
           <input type="range" onChange={(e)=> setSize(Number(e.target.value))} 
           min={ 10} 
           max={230} 
@@ -149,9 +149,10 @@ const Compare = () => {
           max="1000"
           value={speed}
           disabled={sorting}/>
+          <button onClick={resetarray}>New</button>
           <button onClick={()=>startsort()}>Sort</button>
           <button onClick={()=>handlestop()}>Stop</button>
-          <button onClick={reverse}>Rev</button>
+          {/* <button onClick={reverse}>Rev</button> */}
           <select name="algos" className='algoselector2' onChange={(e)=>setAlgo2(e.target.value)} id="">
             <option value="Quicksort" >Quicksort</option>
             <option value="Mergesort" >Mergesort</option>
