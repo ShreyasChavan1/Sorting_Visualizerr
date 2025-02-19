@@ -16,7 +16,7 @@ const Sidebar = () => {
         <hr />
         <li className='name' style={{marginLeft:'4px'}} >
         <i className='fas fa-sort'></i>
-        <Link to='/sorts'><span>Sorts</span></Link>
+        <Link to='/Sorting_Visualizerr/sorts'><span>Sorts</span></Link>
         {submenu?  
         <i onClick={()=>setSubmenu(prev=>!prev)} style={{marginLeft:'2vw'}} class="fa-solid fa-angle-up"></i>
         :<i onClick={()=>setSubmenu(prev=>!prev)} style={{marginLeft:'2vw'}} class="fa-solid fa-angle-down"></i>}
@@ -56,7 +56,7 @@ const Sidebar = () => {
 
       <li className='name' style={{marginLeft:'4px'}}>
       <i class="fa-solid fa-code-compare"></i>
-        <Link to='/compare'><span>Compare</span></Link>
+        <Link to='/Sorting_Visualizerr/compare'><span>Compare</span></Link>
         </li>
       </ul>
         

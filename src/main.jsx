@@ -14,11 +14,11 @@ const router = createBrowserRouter([
     element: <First/>,
   },
   {
-    path:'/sorts',
+    path:'/Sorting_Visualizerr/sorts',
     element:<Visualiser/>
   }
   ,{
-    path:'/compare',
+    path:'/Sorting_Visualizerr/compare',
     element:<Compare/>
   }
 ]);
