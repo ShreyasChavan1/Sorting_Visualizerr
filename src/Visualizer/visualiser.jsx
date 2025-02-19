@@ -20,10 +20,24 @@ const Visualiser = () => {
   const [color,setColor] = useState([]);
   const { extended , selectedAlgo } = useContext(context);
 
+  const [graphHeightfactor,setGraphHeightfactor] = useState(0.8);
+
   const params = useParams();
   
   useEffect(() => {
     resetArray();
+    const updateGraphHeight = () => {
+      if (window.innerWidth < 480) {
+        setGraphHeightfactor(0.65); 
+      }else {
+        setGraphHeightfactor(0.8);
+      }
+    };
+  
+    window.addEventListener("resize", updateGraphHeight);
+    updateGraphHeight(); 
+  
+    return () => window.removeEventListener("resize", updateGraphHeight);
   }, [size]);
 
   const resetArray = () => {
@@ -155,7 +169,7 @@ const Visualiser = () => {
             className={`graph ${color[ind]}`}
               key={ind}
               style={{
-                height: `${(i / Math.max(...array)) * 82}vh`,
+                height: `${(i * graphHeightfactor)}px`,
                 width: `${barWidth}px`,
               }}
             ></div>

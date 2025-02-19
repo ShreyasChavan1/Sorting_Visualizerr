@@ -293,6 +293,7 @@
   flex-direction: column;
    margin-top: 0px; 
   margin-bottom: 0;
+
 }
 .controls {
   display: flex;
@@ -301,16 +302,19 @@
   margin-top: -9px;
   padding: 8px;
   flex-wrap: wrap;
+  z-index: 1;
+ 
+
 }
 .controls .btnn {
-  height: px;
+
   width: 40px;
 }
 .graphs{
-  height: 60vh;
+  height: 71vh;
+  min-height: 0vh;
 }
 .graph{
   margin: 0;
-
 }
 }
