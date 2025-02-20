@@ -22,14 +22,18 @@ const Visualiser = () => {
 
   const [graphHeightfactor,setGraphHeightfactor] = useState(0.8);
 
+  const {submenu,setSubmenu} = useContext(context);
+
   const params = useParams();
   
   useEffect(() => {
     resetArray();
+    setSubmenu(true);
     const updateGraphHeight = () => {
       if (window.innerWidth < 480) {
         setGraphHeightfactor(0.65); 
-      }else {
+      }
+      else {
         setGraphHeightfactor(0.8);
       }
     };

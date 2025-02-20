@@ -17,8 +17,8 @@
     transform: rotate(180deg);
     top: 0;
     min-height: 83vh;  
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     transform: rotateX(180deg);
     
 }
@@ -316,6 +316,7 @@
 .graphs{
   height: 79vh;
   min-height: 0vh;
+  margin: 0 3.5vw;
 }
 .graph{
   margin: 0;

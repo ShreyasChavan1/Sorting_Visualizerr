@@ -59,7 +59,7 @@ const First = () => {
           Sorting algorithms can be difficult to understand and it's easy to get confused. We believe visualizing sorting algorithms can be a great way to better understand their functioning while having fun!
           </p>
         <div className="d-flex justify-content-center align-items-center">
-          <Link to = '/sorts'><button type="button" className="bton">Sorts</button></Link>
+          <Link to = '/Sorting_Visualizerr/sorts'><button type="button" className="bton">Sorts</button></Link>
         </div>
         </div>
         </div>
