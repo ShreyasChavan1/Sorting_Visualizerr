@@ -295,6 +295,9 @@
   margin-bottom: 0;
 
 }
+.bg{
+  background-attachment: scroll;
+}
 .controls {
   display: flex;
   justify-content: flex-start;
@@ -311,10 +314,15 @@
   width: 40px;
 }
 .graphs{
-  height: 71vh;
+  height: 79vh;
   min-height: 0vh;
 }
 .graph{
   margin: 0;
 }
+}
+@media (max-height:800px){
+  .graphs{
+    height: 72.7vh;
+  }
 }
