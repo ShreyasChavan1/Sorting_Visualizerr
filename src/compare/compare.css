@@ -12,12 +12,12 @@
 .compare{
     display: flex;
     min-width: 50vw;
-    min-height:70vh ;
+    min-height:77vh ;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border: 2px solid white;
-    margin-top: 5vh;
+    margin-top: 14vh;
 }
 
 .controlls{
@@ -25,7 +25,7 @@
     height: 10vh;
     width: 80%;
     background-color: rgb(26, 26, 26);
-    top: 7vh;
+    top: 16vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@
 .graph1,.graph2{
     min-width: 47vw;
     min-height:67vh;
-    padding: 5px;
+    /* padding: 5px; */
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -88,6 +88,33 @@ border-radius: 10px;
     margin-left: 9vw;
 }
 
+.Analysis{
+  display: flex;
+  flex-direction:row;
+  border: 1px solid white;
+  height: 40vh;
+  width: 100%;
+
+  margin-top: 8vh;
+}
+.info-graph1{
+  height: 40vh;
+  border-right: 1px solid white;
+  width: 49vw;
+  color: white;
+  padding: 15px;
+  text-align:justify;
+}
+.info-graph2{
+  height: 40vh;
+  width: 49vw;
+  color: white;
+  padding: 15px;
+  text-align:justify;
+}
+.text{
+  margin-left: 4vw;
+}
   /* 🔹 RESPONSIVE DESIGN */
   /* @media (max-width: 1024px) {
     .compare {

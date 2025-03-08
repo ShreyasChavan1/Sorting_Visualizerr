@@ -87,7 +87,7 @@ const Visualiser = () => {
     stopRef.current = false;
     const sortingAlgo = Algorithms[selectedAlgo];
     if (sortingAlgo) {
-      await sortingAlgo([...array], visualiseArray);
+      await sortingAlgo([...array], visualiseArray,undefined,undefined);
     }
     setSorting(false);
   };

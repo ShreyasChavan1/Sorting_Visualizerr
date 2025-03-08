@@ -11,6 +11,7 @@
     "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizerr"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@react-spring/parallax": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "firebase": "^11.1.0",

@@ -1,60 +1,69 @@
 //mergesort
-export const Mergesort = async (array, visualiseArray) => {
-    const auxArray = [...array];
-    await mergesortHelper(array, 0, array.length - 1, auxArray, visualiseArray);
-    for (let k = 0; k < array.length; k++) {
-      await visualiseArray(k, array[k], null, null, false); 
-    }
-  };
+
+export const Mergesort = async (array, visualiseArray , setComparisons = ()=>{},setSwaps = () => {}) => {
+  let comparisons = 0;
+  let swaps = 0;
+  const auxArray = [...array];
+  await mergesortHelper(array, 0, array.length - 1, auxArray, visualiseArray,() => comparisons++,() => swaps++);
+  for (let k = 0; k < array.length; k++) {
+    await visualiseArray(k, array[k], null, null, false); 
+  }
+  setComparisons(comparisons);
+  setSwaps(swaps);
+};
+
+const mergesortHelper = async (mainarray, start, end, aux, visualiseArray,incrementComparison,incSwaps) => {
+  if (start >= end) return; 
+
+  let mid = Math.floor((start + end) / 2);
   
-  const mergesortHelper = async (mainarray, start, end, aux, visualiseArray) => {
-    if (start >= end) return; 
+ 
+  await mergesortHelper(aux, start, mid, mainarray, visualiseArray,incrementComparison,incSwaps);
+  await mergesortHelper(aux, mid + 1, end, mainarray, visualiseArray,incrementComparison,incSwaps);
   
-    let mid = Math.floor((start + end) / 2);
-    
-   
-    await mergesortHelper(aux, start, mid, mainarray, visualiseArray);
-    await mergesortHelper(aux, mid + 1, end, mainarray, visualiseArray);
-    
-    await merge(mainarray, start, mid, end, aux, visualiseArray);
+  await merge(mainarray, start, mid, end, aux, visualiseArray,incrementComparison,incSwaps);
 
 
-  };
-  
-  const merge = async (mainarray, start, mid, end, aux, visualiseArray) => {
-    let i = start; 
-    let j = mid + 1; 
-    let k = start; 
-  
-    while (i <= mid && j <= end) {
-      if (aux[i] <= aux[j]) {
-        mainarray[k++] = aux[i++];
-        await visualiseArray(k - 1, mainarray[k - 1],i-1,mainarray[i -1 ],true);
-      } else {
-        mainarray[k++] = aux[j++];
-        await visualiseArray(k - 1, mainarray[k - 1],j - 1,mainarray[j -1],true);
-      }
-      
-    }
-  
-    while (i <= mid) {
+};
+
+const merge = async (mainarray, start, mid, end, aux, visualiseArray,incrementComparison,incSwaps) => {
+  let i = start; 
+  let j = mid + 1; 
+  let k = start; 
+
+  while (i <= mid && j <= end) {
+    incrementComparison();
+    if (aux[i] <= aux[j]) {
       mainarray[k++] = aux[i++];
-      await visualiseArray(k - 1, mainarray[k - 1],i-1,mainarray[i -1 ],false);
-    }
-  
-    while (j <= end) {
+      await visualiseArray(k - 1, mainarray[k - 1],i-1,mainarray[i -1 ],true);
+    } else {
       mainarray[k++] = aux[j++];
-      await visualiseArray(k - 1, mainarray[k - 1],j - 1,mainarray[j -1],false);
+      incSwaps(); 
+      await visualiseArray(k - 1, mainarray[k - 1],j - 1,mainarray[j -1],true);
     }
-  
-    console.log(`Merged: ${mainarray.slice(start, end + 1)}`);
-  };
+    
+  }
+
+  while (i <= mid) {
+
+    mainarray[k++] = aux[i++];
+    await visualiseArray(k - 1, mainarray[k - 1],i-1,mainarray[i -1 ],false);
+  }
+
+  while (j <= end) {
+
+    mainarray[k++] = aux[j++];
+    await visualiseArray(k - 1, mainarray[k - 1],j - 1,mainarray[j -1],false);
+  }
+
+};
+
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
   
 
 //quicksort
-  export const Quicksort = async (mainarray, visualiseArray) => {
+  export const Quicksort = async (mainarray, visualiseArray,setComparisons = () => {}) => {
     let low = 0;
     let high = mainarray.length - 1;
     await quicksorthelper(mainarray, low, high, visualiseArray);

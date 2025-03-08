@@ -7,13 +7,14 @@ export const context = createContext();
         const [extended,setExtended] = useState(false);
         const [selectedAlgo, setSelectedAlgo] = useState('Mergesort');
         const [submenu,setSubmenu] = useState(false);
+        
     const contextValue = {
         extended,
         setExtended,
         selectedAlgo,
         setSelectedAlgo,
         submenu,
-        setSubmenu
+        setSubmenu,
     }
     return (
         <context.Provider value={contextValue}>

@@ -3,12 +3,13 @@ import './compare.css';
 import Naavbar from '../component/navbar';
 import { context } from '../backend/context';
 import Sidebar from '../sidbar/sidebar';
-import Visualiser from '../Visualizer/visualiser';
 import * as Algorithms from '../Visualizer/Algorithms'
+import { collection, doc, getDocs ,getDoc, query, where} from "firebase/firestore";
+import { db } from '../backend/firebase';
 const Compare = () => {
     const {extended} = useContext(context);
     const [algo,setAlgo] = useState('Quicksort');
-    const [algo2,setAlgo2] = useState('Mergesort');
+    const [algo2,setAlgo2] = useState('Quicksort');
     const [array,setArray] = useState([]);
     const [array2,setArray2] = useState([]);
     const [size,setSize] = useState(200);
@@ -17,9 +18,50 @@ const Compare = () => {
     const [speed,setSpeed] = useState(50);
     const [sorting,setSorting] = useState(false);
     const stopRef = useRef(false);
+
+    const [timecomplex,setTimecomplex] = useState("null");
+    const [spacecomplex,setSpacecomplex] =useState("null");
+
+    const [timecomplex1,setTimecomplex1] = useState("null");
+    const [spacecomplex1,setSpacecomplex1] =useState("null");
+
+    const [comparisons,setComparisons] = useState(0);
+    const [swaps,setSwaps] = useState(0);
+
+    const [comparisons1,setComparisons1] = useState(0);
+    const [swaps1,setSwaps1] = useState(0);
+
+    const getData = async() =>{
+      const userRef = collection(db,"Algo-Description");
+      const q = query(userRef,where("Name","==",algo));
+      const q1 = query(userRef,where("Name","==",algo2));
+      
+      try {
+          const querysnapshot = await getDocs(q);
+          const wst = querysnapshot.docs[0].data().Average;
+          const spc = querysnapshot.docs[0].data().Space;
+          
+          const querysnapshot1 = await getDocs(q1);
+          const wst1 = querysnapshot1.docs[0].data().Average;
+          const spc1 = querysnapshot1.docs[0].data().Space;
+
+          setTimecomplex(wst.toString());
+          setSpacecomplex(spc.toString());
+          
+          setTimecomplex1(wst1.toString());
+          setSpacecomplex1(spc1.toString());
+
+      } catch (error) {
+          alert("there is error")
+      }
+  }
+
     useEffect(() => {
       resetarray();
     },[size]);
+    useEffect(() => {
+      getData();
+    },[algo,algo2]);
 
     const resetarray = () =>{
       const newarray = [];
@@ -30,16 +72,7 @@ const Compare = () => {
       setArray2([...newarray]);
     }
 
-    // const reverse = async () =>{
-    //   let n = array.length;
-    //   let i = 0;
-    //   while(i < n){
-    //     [array[i],array[n - 1]] = [array[n-1],array[i]];
-    //     await visualize(i,array[i],n -1,array[n-1],false);
-    //     i++;
-    //     n--;
-    //   }
-    // }
+
 
     const visualize = async(index,value,index2,value2,isComparing = false,isSecond = false) =>{
       return new Promise((resolve)=>{
@@ -96,11 +129,11 @@ const Compare = () => {
       const sorting1 = Algorithms[algo];
       const sorting2 = Algorithms[algo2];
       if(sorting1){
-       const promise1 = sorting1([...array],(index,value,index2,value2,isComparing,isSecond) => visualize(index,value,index2,value2,isComparing,false));
+       const promise1 = sorting1([...array],(index,value,index2,value2,isComparing,isSecond) => visualize(index,value,index2,value2,isComparing,false),setComparisons,setSwaps);
        promises.push(promise1);
       }
       if(sorting2){
-        const promise2 =  sorting2([...array],(index,value,index2,value2,isComparing,isSecond) => visualize(index,value,index2,value2,isComparing,true));
+        const promise2 =  sorting2([...array],(index,value,index2,value2,isComparing,isSecond) => visualize(index,value,index2,value2,isComparing,true),setComparisons1,setSwaps1);
         promises.push(promise2);
       }
       await Promise.all(promises);
@@ -191,6 +224,31 @@ const Compare = () => {
               ))
             }
         </div>        
+      </div>
+      <div className="Analysis">
+        <div className="info-graph1">
+          <div className="text">
+          <h3>Algorithm 1: {algo}</h3>
+              <p>Time Complexity: {timecomplex}</p>
+              <p>Space Complexity: {spacecomplex}</p>
+              <p>Comparisons: {comparisons}</p>
+              <p>Swaps: {swaps}</p>
+              <p>Execution Time:</p>
+              <p>Stability: </p>
+          </div>
+        </div>
+        <div className="info-graph2">
+          <div className="text">
+
+        <h3>Algorithm 2: {algo2}</h3>
+            <p>Time Complexity: {timecomplex1}</p>
+            <p>Space Complexity: {spacecomplex1}</p>
+            <p>Comparisons:{comparisons1} </p>
+            <p>Swaps:{swaps1} </p>
+            <p>Execution Time:</p>
+            <p>Stability: </p>
+          </div>
+        </div>
       </div>
     </div>
     </div>
