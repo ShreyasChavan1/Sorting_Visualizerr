@@ -51,6 +51,10 @@ const Sidebar = () => {
               <Link to='/Sorting_Visualizerr/sorts'><li onClick={() => setSelectedAlgo('Bongosort')}>Bongo Sort</li></Link>
               <Link to='/Sorting_Visualizerr/sorts'><li onClick={() => setSelectedAlgo('Stoogesort')}>Stooge Sort</li></Link>
             </ul>
+            <span className="weird">CUSTOM</span>
+            <ul>
+            <Link to='/Sorting_Visualizerr/sorts'><li onClick={() => setSelectedAlgo('Customsort')}>Cusotom Sort</li></Link>
+            </ul>
         </div>
       <hr />
 

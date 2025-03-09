@@ -278,7 +278,24 @@
       cursor: grabbing;
     }
   }
-
+.cu{
+  background: linear-gradient(184deg, rgb(28, 28, 28) 23%, rgba(0,84,84,1) 100%);
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.cu1{
+  display: flex;
+  flex-direction: column;
+}
+.error-message {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: red;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
 
 
 @media (max-width:480px){
