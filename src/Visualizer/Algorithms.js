@@ -63,134 +63,178 @@ const merge = async (mainarray, start, mid, end, aux, visualiseArray,incrementCo
   
 
 //quicksort
-  export const Quicksort = async (mainarray, visualiseArray,setComparisons = () => {}) => {
-    let low = 0;
-    let high = mainarray.length - 1;
-    await quicksorthelper(mainarray, low, high, visualiseArray);
-    for (let k = 0; k < mainarray.length; k++) {
-      await visualiseArray(k, mainarray[k], null, null, false); 
-    }
-  };
-  
-  const quicksorthelper = async (mainarray, low, high, visualiseArray) => {
-    if (low >= high) return; 
-  
-    const partitionIndex = await quick(mainarray, low, high, visualiseArray);
-   
-    await quicksorthelper(mainarray, low, partitionIndex - 1, visualiseArray);
-    await quicksorthelper(mainarray, partitionIndex + 1, high, visualiseArray);
-  };
-  
-  const quick = async (mainarray, low, high, visualiseArray) => {
-    let pivotIndex = low; 
-    let pivotValue = mainarray[pivotIndex];
-    let i = low + 1;
-    let j = high;
-  
-    while (i <= j) {
-      while (i <= high && mainarray[i] <= pivotValue) i++;
-      while (j >= low && mainarray[j] > pivotValue) j--;
-  
-      if (i < j) {
-       
-        let temp = mainarray[i];
-        mainarray[i] = mainarray[j];
-        mainarray[j] = temp;
-        
-        await visualiseArray(i, mainarray[i], j, mainarray[j], true);
+export const Quicksort = async (mainarray, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
+  let comparisons = 0;
+  let swaps = 0;
+  let low = 0;
+  let high = mainarray.length - 1;
+
+  await quicksorthelper(mainarray, low, high, visualiseArray, () => comparisons++, () => swaps++);
+
+  for (let k = 0; k < mainarray.length; k++) {
+      await visualiseArray(k, mainarray[k], null, null, false);
+  }
+
+  setComparisons(comparisons);
+  setSwaps(swaps);
+};
+
+const quicksorthelper = async (mainarray, low, high, visualiseArray, incrementComparison, incSwaps) => {
+  if (low >= high) return;
+
+  const partitionIndex = await quick(mainarray, low, high, visualiseArray, incrementComparison, incSwaps);
+
+  await quicksorthelper(mainarray, low, partitionIndex - 1, visualiseArray, incrementComparison, incSwaps);
+  await quicksorthelper(mainarray, partitionIndex + 1, high, visualiseArray, incrementComparison, incSwaps);
+};
+
+const quick = async (mainarray, low, high, visualiseArray, incrementComparison, incSwaps) => {
+  let pivotValue = mainarray[low];
+  let i = low + 1;
+  let j = high;
+
+  while (i <= j) {
+      while (i <= high) {
+          incrementComparison();  
+          if (mainarray[i] > pivotValue) break;
+          i++;
       }
-    }
-    
-    let temp = mainarray[low];
-    mainarray[low] = mainarray[j];
-    mainarray[j] = temp;
-    
-    await visualiseArray(low, mainarray[low], j, mainarray[j], true);
-  
-    return j;
-  };
-  
+
+      while (j >= low) {
+          incrementComparison();  
+          if (mainarray[j] <= pivotValue) break;
+          j--;
+      }
+
+      if (i < j) {
+          [mainarray[i], mainarray[j]] = [mainarray[j], mainarray[i]];
+          incSwaps();
+          await visualiseArray(i, mainarray[i], j, mainarray[j], true);
+      }
+  }
+
+
+  [mainarray[low], mainarray[j]] = [mainarray[j], mainarray[low]];
+  incSwaps();
+  await visualiseArray(low, mainarray[low], j, mainarray[j], true);
+
+  return j;
+};
+
+
   
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //Heapsort
-export const Heapsort = async(mainarray,visualiseArray)=>{
+export const Heapsort = async (mainarray, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
   let size = mainarray.length;
+  let comparisons = 0;
+  let swaps = 0;
 
-  for(let i = Math.floor(size/2) - 1; i >= 0; --i) {
-    await heapify(mainarray,size,i,visualiseArray);
+  for (let i = Math.floor(size / 2) - 1; i >= 0; --i) {
+    await heapify(mainarray, size, i, visualiseArray, () => comparisons++, () => swaps++);
   }
 
-  for(let j = size-1 ; j >0 ; --j){
+  for (let j = size - 1; j > 0; --j) {
     let temp = mainarray[0];
     mainarray[0] = mainarray[j];
     mainarray[j] = temp;
+    swaps++;  // Swap between root and last element
 
-    await visualiseArray(0,mainarray[0],j,mainarray[j],true);
-    await heapify(mainarray,j,0,visualiseArray);
-
+    await visualiseArray(0, mainarray[0], j, mainarray[j], true);
+    await heapify(mainarray, j, 0, visualiseArray, () => comparisons++, () => swaps++);
   }
+
   for (let k = 0; k < mainarray.length; k++) {
-    await visualiseArray(k, mainarray[k], null, null, false); 
+    await visualiseArray(k, mainarray[k], null, null, false);
   }
-}
 
-const heapify = async(mainarray,size,i,visualiseArray) => {
+  setComparisons(comparisons);
+  setSwaps(swaps);
+};
+
+const heapify = async (mainarray, size, i, visualiseArray, incrementComparison, incrementSwap) => {
   let left = 2 * i + 1;
   let right = 2 * i + 2;
   let max = i;
-  if(left < size && mainarray[left] > mainarray[max]){
-    max = left;
+
+  if (left < size) {
+    incrementComparison();
+    if (mainarray[left] > mainarray[max]) {
+      max = left;
+    }
   }
-  if(right < size && mainarray[right] > mainarray[max]){
-    max = right;
+
+  if (right < size) {
+    incrementComparison();
+    if (mainarray[right] > mainarray[max]) {
+      max = right;
+    }
   }
-  if(max !== i){
+
+  if (max !== i) {
     let temp = mainarray[i];
     mainarray[i] = mainarray[max];
     mainarray[max] = temp;
-    await visualiseArray(i,mainarray[i],max,mainarray[max],true);
+    incrementSwap();
 
-    await heapify(mainarray,size,max,visualiseArray);
+    await visualiseArray(i, mainarray[i], max, mainarray[max], true);
+    await heapify(mainarray, size, max, visualiseArray, incrementComparison, incrementSwap);
   }
-}
+};
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //quadratic ones
 // bubble sort EZ!
-export const Bubblesort = async(mainarray,visualiseArray) =>{
+export const Bubblesort = async (mainarray, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
+  setComparisons(0);
+  setSwaps(0);
   let n = mainarray.length;
-  for(let i = 0; i < n-1 ;i++){
-    let isswaped = false;
-    for(let j = 0 ; j < n - i - 1 ; j++){
-      if(mainarray[j] > mainarray[j+1]){
+
+  for (let i = 0; i < n - 1; i++) {
+    let isswapped = false;
+
+    for (let j = 0; j < n - i - 1; j++) {
+      setComparisons(prev => prev+1);
+
+      if (mainarray[j] > mainarray[j + 1]) {
+
         let temp = mainarray[j];
-        mainarray[j] = mainarray[j+1];
-        mainarray[j+1] = temp;
-        
-        isswaped = true;
-        await visualiseArray(j,mainarray[j],j+1,mainarray[j+1],true);
+        mainarray[j] = mainarray[j + 1];
+        mainarray[j + 1] = temp;
+
+        setSwaps(prev => prev+1);
+        isswapped = true;
+        await visualiseArray(j, mainarray[j], j + 1, mainarray[j + 1], true);
       }
     }
-    if(!isswaped) break;
+
+    if (!isswapped) break; 
   }
+
   for (let k = 0; k < mainarray.length; k++) {
-    await visualiseArray(k, mainarray[k], null, null, false); 
+    await visualiseArray(k, mainarray[k], null, null, false);
   }
-}
+
+
+};
+
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //Selection sort EZ!
-export const Selectionsort = async(mainarray,visualiseArray) =>{
+export const Selectionsort = async(mainarray,visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) =>{
+  setComparisons(0);
+  setSwaps(0);
   let n = mainarray.length;
   let min = 0;
   for(let i = 0;i < n - 1;i++){
     min = i;
     for(let j = i + 1; j < n ;j++){
+      setComparisons(prev => prev+1);
       if(mainarray[j] < mainarray[min]){
         min = j;
       }
@@ -199,13 +243,14 @@ export const Selectionsort = async(mainarray,visualiseArray) =>{
       let temp = mainarray[i];
       mainarray[i] = mainarray[min];
       mainarray[min] = temp;
-
+      setSwaps(prev => prev+1);
       await visualiseArray(i,mainarray[i],min,mainarray[min],true);
     
   }
   for (let k = 0; k < mainarray.length; k++) {
     await visualiseArray(k, mainarray[k], null, null, false); 
   }
+
 }
 
 
@@ -213,45 +258,62 @@ export const Selectionsort = async(mainarray,visualiseArray) =>{
 
 
 //insertionsort
-export const Insertionsort = async(mainarray,visualiseArray)=>{
+export const Insertionsort = async (mainarray, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
+  setComparisons(0);
+  setSwaps(0);
   let n = mainarray.length;
-  let key;
-  for(let i = 1 ; i < n ;i++){
-    key = mainarray[i];
+
+  for (let i = 1; i < n; i++) {
+    let key = mainarray[i];
     let j = i - 1;
-    while(j >= 0 && mainarray[j] > key){
+
+    
+
+    while (j >= 0 && mainarray[j] > key) {
+      setComparisons(prev => prev + 1); // Count each comparison inside while
       mainarray[j + 1] = mainarray[j];
+      setSwaps(prev => prev + 1); // Count swaps
       await visualiseArray(j + 1, mainarray[j + 1], j, mainarray[j], true);
       j--;
     }
-    mainarray[j + 1]  = key;
+
+    mainarray[j + 1] = key;
     await visualiseArray(j + 1, key, i, mainarray[i], false);
   }
+
   for (let k = 0; k < mainarray.length; k++) {
-    await visualiseArray(k, mainarray[k], null, null, false); 
+    await visualiseArray(k, mainarray[k], null, null, false);
   }
-}
+};
+
+
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //shakersort
-export const Shakersort = async(mainarray,visualiseArray)=>{
+export const Shakersort = async(mainarray,visualiseArray,setComparisons = ()=>{},setSwaps = () => {})=>{
+  setComparisons(0);
+  setSwaps(0);
   let l = 0;
   let r = mainarray.length - 1;
   let swapped;
   do{
     swapped = false;
     for(let i = l;i < r;i++){
+      setComparisons(prev => prev+1);
       if(mainarray[i] > mainarray[i + 1]){
         [mainarray[i],mainarray[i+1]] = [mainarray[i + 1],mainarray[i]];
+        setSwaps(prev => prev+1);
         swapped = true;
         await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
       }
     }
     r--;
     for(let j = r; j > l ;j--){
+      setComparisons(prev=>prev + 1);
       if(mainarray[j] < mainarray[j - 1]){
         [mainarray[j],mainarray[j - 1]] = [mainarray[j - 1],mainarray[j]];
+        setSwaps(prev => prev + 1);
         swapped = true;
         await visualiseArray(j,mainarray[j],j - 1,mainarray[j- 1],true);
       }
@@ -267,22 +329,21 @@ export const Shakersort = async(mainarray,visualiseArray)=>{
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
 //pancake sort ?
-async function flip(arr, k, visualiseArray) {
+async function flip(arr, k, visualiseArray, setSwaps = () => {}) {
   let left = 0;
   while (left < k) {
+      setSwaps(prev => prev + 1); 
       [arr[left], arr[k]] = [arr[k], arr[left]];
-
-      // Visualize the flipping process
       await visualiseArray(left, arr[left], k, arr[k], true);
 
       k--;
       left++;
   }
 }
-
-async function max_index(arr, k) {
+async function max_index(arr, k,setComparisons =() => {}) {
   let index = 0;
   for (let i = 1; i < k; i++) {
+    setComparisons(prev => prev + 1);
       if (arr[i] > arr[index]) {
           index = i;
       }
@@ -290,19 +351,16 @@ async function max_index(arr, k) {
   return index;
 }
 
-export async function Pancakesort(arr, visualiseArray) {
+export async function Pancakesort(arr, visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) {
+  setComparisons(0);
+  setSwaps(0);
   let n = arr.length;
   while (n > 1) {
-      let maxdex = await max_index(arr, n);
-
+      let maxdex = await max_index(arr, n,setComparisons);
       if (maxdex !== n - 1) {
-          
-          await flip(arr, maxdex, visualiseArray);
-
-         
-          await flip(arr, n - 1, visualiseArray);
+          await flip(arr, maxdex, visualiseArray,setSwaps);
+          await flip(arr, n - 1, visualiseArray,setSwaps);
       }
-
       n--;
   }
   for (let k = 0; k < arr.length; k++) {
@@ -313,22 +371,28 @@ export async function Pancakesort(arr, visualiseArray) {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 //oddevensort
-export const Oddevensort = async(mainarray,visualiseArray) =>{
+export const Oddevensort = async(mainarray,visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) =>{
+  setComparisons(0);
+  setSwaps(0);
   let n = mainarray.length;
   let sorted = false;
   while(!sorted){
     sorted = true;
     for(let i = 1 ; i < n - 1 ; i+=2){
+      setComparisons(prev => prev + 1);
       if(mainarray[i] > mainarray[i+1]){
         [mainarray[i],mainarray[i+1]] = [mainarray[i+1],mainarray[i]];
+        setSwaps(prev => prev + 1);
         sorted = false;
         await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
       }
     }
 
     for(let i = 0; i < n - 1; i+=2){
+      setComparisons(prev => prev + 1);
       if(mainarray[i] > mainarray[i+1]){
         [mainarray[i],mainarray[i+1]] = [mainarray[i+1],mainarray[i]];
+        setSwaps(prev => prev + 1);
         sorted = false;
         await visualiseArray(i,mainarray[i],i + 1,mainarray[i + 1],true);
       }
@@ -344,7 +408,7 @@ export const Oddevensort = async(mainarray,visualiseArray) =>{
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 //Bitonic sort
-export const Bitonicsort = async (arr, visualiseArray) => {
+export const Bitonicsort = async (arr, visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) => {
   let n = arr.length;
   let k, j, l, i, temp;
       for (k = 2; k <= n; k *= 2) {
@@ -352,14 +416,15 @@ export const Bitonicsort = async (arr, visualiseArray) => {
               for (i = 0; i < n; i++) {
                   l = i ^ j;
                   if (l > i) {
+                    setComparisons(prev => prev + 1);
                       if (
-                          ((i & k) == 0 && arr[i] > arr[l]) ||
+                          ((i & k) === 0 && arr[i] > arr[l]) ||
                           ((i & k) !== 0 && arr[i] < arr[l])
                       ) {
                           temp = arr[i];
                           arr[i] = arr[l];
                           arr[l] = temp;
-                         
+                          setSwaps(prev => prev + 1);
                           await visualiseArray(i, arr[i], l, arr[l], true);
                       }
                   }
@@ -375,21 +440,31 @@ export const Bitonicsort = async (arr, visualiseArray) => {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 //Shellsort
-export const Shellsort = async (arr, visualiseArray) => {
+export const Shellsort = async (arr, visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) => {
   let n = arr.length;
+  setComparisons(0);
+  setSwaps(0);
 
   for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
     for (let i = gap; i < n; i++) {
       let key = arr[i];
       let j = i;
-      while (j >= gap && arr[j - gap] > key) {
-        arr[j] = arr[j - gap];
-        await visualiseArray(j, arr[j], j - gap, arr[j - gap], true); 
-        j -= gap;
-      }
 
-      arr[j] = key;
-      await visualiseArray(j, key, i, arr[i], false);
+      while (j >= gap) {
+        setComparisons(prev => prev + 1); 
+        if (arr[j - gap] > key) {
+          arr[j] = arr[j - gap];
+          setSwaps(prev => prev + 1);
+          await visualiseArray(j, arr[j], j - gap, arr[j - gap], true);
+          j -= gap;
+        } else {
+          break;
+        }
+      }
+      if (j !== i) {
+        arr[j] = key;
+        await visualiseArray(j, arr[j], i, arr[i], false);
+      }
     }
   }
 
@@ -402,43 +477,52 @@ export const Shellsort = async (arr, visualiseArray) => {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 //radix sort not so Ez !!!
-const getmax =(arr,n)=>{
+const getmax = (arr, n) => {
   let max = 0;
-  for(let i = 0 ; i < n ;i++){
-    if(max < arr[i].toString().length){
+  for (let i = 0; i < n; i++) {
+    if (max < arr[i].toString().length) {
       max = arr[i].toString().length;
     }
   }
   return max;
-}
-const getpos = (num,place) =>{
-      return Math.floor(Math.abs(num)/ Math.pow(10,place)) % 10;
-}
-export const Radixsort = async(arr,visualiseArray) => {
+};
+
+const getpos = (num, place) => {
+  return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+};
+
+export const Radixsort = async (arr, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
+  setComparisons(0);
+  setSwaps(0);
   let n = arr.length;
-  let max = getmax(arr,n);
+  let max = getmax(arr, n);
 
-  for(let i = 0; i < max ;i++){
-      let bucket = Array.from({length : 10}, () => [ ]);
-      for(let j = 0 ; j < arr.length ; j++){
-          bucket[getpos(arr[j],i)].push(arr[j]);
+  for (let i = 0; i < max; i++) {
+    let bucket = Array.from({ length: 10 }, () => []);
+    for (let j = 0; j < arr.length; j++) {
+      bucket[getpos(arr[j], i)].push(arr[j]);
+      setComparisons(prev => prev + 1); // Increment comparisons
+      await visualiseArray(j, arr[j], null, null, true);
+    }
 
-          await visualiseArray(j, arr[j], null, null, true);
-      }
-      arr = [ ].concat(...bucket);
+    arr = [].concat(...bucket);
+    setSwaps(prev => prev + n); // Approximate swaps as the array is reconstructed
 
-      for (let k = 0; k < arr.length; k++) {
-        await visualiseArray(k, arr[k], null, null, false); 
-      }
+    for (let k = 0; k < arr.length; k++) {
+      await visualiseArray(k, arr[k], null, null, false);
+    }
   }
   return arr;
-}
+};
+;
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //combsort kinda EZ ?
 
-export const Combsort = async(arr,visualiseArray) =>{
+export const Combsort = async(arr,visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) =>{
+  setComparisons(0);
+  setSwaps(0);
   let size = arr.length;
   let shrink = 1.3;
   let gap = size;
@@ -453,8 +537,10 @@ export const Combsort = async(arr,visualiseArray) =>{
 
     for(let i = 0; i < size - gap ;i++){
       let sm = gap + i;
+      setComparisons(prev => prev + 1);
       if(arr[i] > arr[sm]){
         [arr[i],arr[sm]] = [arr[sm],arr[i]];
+        setSwaps(prev => prev + 1);
         sorted = false;
         await visualiseArray(i, arr[i], sm,arr[sm] ,true);
       }
@@ -469,63 +555,82 @@ export const Combsort = async(arr,visualiseArray) =>{
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //bongosort >
 
-const isSorted = (arr) =>{
+const isSorted = (arr, setComparisons) => {
   let n = arr.length;
-  for(let i = 1 ; i < n ; i++){
-    if(arr[i] < arr[i - 1]){
+  for (let i = 1; i < n; i++) {
+    
+    if (arr[i] < arr[i - 1]) {
       return false;
     }
   }
   return true;
 }
-const shuffle =async (arr,visualiseArray)=>{
-  var n = arr.length , index;
-  while(n > 0){
+
+const shuffle = async (arr, visualiseArray, setSwaps) => {
+  let n = arr.length, index;
+  while (n > 0) {
     index = Math.floor(Math.random() * n);
     n--;
-    [arr[n],arr[index]] = [arr[index],arr[n]];
-    await visualiseArray(n,arr[n],index,arr[index],true);
+    if (index !== n) {
+      [arr[n], arr[index]] = [arr[index], arr[n]];
+      setSwaps(prev => prev + 1);
+      await visualiseArray(n, arr[n], index, arr[index], true);
+    }
   }
   return arr;
 }
-export const Bongosort = async(arr,visualiseArray) =>{
-  var sorted = false;
-  let maxattemps = 50;
+
+export const Bongosort = async (arr, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
+  setComparisons(0);
+  setSwaps(0);
+  
+  let sorted = false;
+  let maxAttempts = 50;  
   let attempts = 0;
-  while(!sorted && attempts < maxattemps){
-    arr = await shuffle(arr,visualiseArray);
-    sorted = isSorted(arr);
+  
+  while (!sorted && attempts < maxAttempts) {
+    setComparisons(prev => prev + 1);
+    arr = await shuffle(arr, visualiseArray, setSwaps);
+    sorted = isSorted(arr, setComparisons);
     attempts++;
   }
+  
   return arr;
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //stoogesort?
 
-export const Stoogesort = async(arr,visualiseArray) =>{
+export const Stoogesort = async (arr, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
   let l = 0;
   let h = arr.length - 1;
 
-  await stoogehelper(arr,l,h,visualiseArray);
+  setComparisons(0);
+  setSwaps(0);
+
+  await stoogehelper(arr, l, h, visualiseArray, setComparisons, setSwaps);
 
   for (let k = 0; k < arr.length; k++) {
-      await visualiseArray(k, arr[k], null, null, false); 
+    await visualiseArray(k, arr[k], null, null, false);
   }
 }
-const stoogehelper = async(arr,l,h,visualiseArray) => {
-  if(l >= h) return;
 
-  if(arr[l] > arr[h]){
-    [arr[l],arr[h]] = [arr[h],arr[l]];
-    await visualiseArray(l,arr[l],h,arr[h],true);
+const stoogehelper = async (arr, l, h, visualiseArray, setComparisons, setSwaps) => {
+  if (l >= h) return;
+
+  setComparisons(prev => prev + 1); 
+
+  if (arr[l] > arr[h]) {
+    [arr[l], arr[h]] = [arr[h], arr[l]];
+    setSwaps(prev => prev + 1);
+    await visualiseArray(l, arr[l], h, arr[h], true);
   }
 
-  if(h - l + 1 > 2){
-    let t = parseInt((h - l + 1)/3,10);
+  if (h - l + 1 > 2) {
+    let t = parseInt((h - l + 1) / 3, 10);
 
-   await stoogehelper(arr,l,h - t,visualiseArray);
-   await stoogehelper(arr,l + t,h,visualiseArray);
-   await stoogehelper(arr,l,h - t,visualiseArray);
+    await stoogehelper(arr, l, h - t, visualiseArray, setComparisons, setSwaps);
+    await stoogehelper(arr, l + t, h, visualiseArray, setComparisons, setSwaps);
+    await stoogehelper(arr, l, h - t, visualiseArray, setComparisons, setSwaps);
   }
 }

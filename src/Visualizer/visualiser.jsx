@@ -155,11 +155,19 @@ const Visualiser = () => {
             <button className="btnn" onClick={resetArray} disabled={sorting}>New</button>
             <div className="slider_div">
               <input 
-                onChange={(e) => setSize(Number(e.target.value))} 
                 type="range" 
                 className="slider" 
-                min={10} max={500} value={size} step={1}
+                min={selectedAlgo === "Bitonicsort"? 16 :10} max={selectedAlgo === "Bitonicsort"?512:500} 
+                value={size} 
+                step={1}  
                 disabled={sorting}
+                onChange={(e) => {
+                  let newSize = parseInt(e.target.value);
+                  if (selectedAlgo === "Bitonicsort") {
+                    newSize = Math.pow(2, Math.round(Math.log2(newSize))); 
+                  }
+                  setSize(newSize);
+                }}
               />
               <span>Elements: {size}</span>
             </div>

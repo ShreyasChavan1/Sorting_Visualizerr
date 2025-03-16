@@ -142,11 +142,23 @@ const Compare = () => {
     }
     const handlestop = () =>{
       stopRef.current = true;
-      sorting(false);
+      setSorting(false);
     }
     const randomGenerate = (min,max) => Math.floor(Math.random() * ( max - min + 1) + min);
     const containerwidth = 580;
     const barwidth = Math.max(Math.floor((containerwidth/array.length),2))
+    // console.log(comparisons);
+    // console.log(comparisons1);
+    const reverse = async () => {
+      let n = array.length;
+      let i = 0;
+      while (i < n) {
+        [array[i], array[n - 1]] = [array[n - 1], array[i]];
+        await visualize(i, array[i], n - 1, array[n - 1], false);
+        i++;
+        n--;
+      }
+    }
   return (
     <div className="whole">
     <Naavbar />
@@ -185,7 +197,7 @@ const Compare = () => {
           <button onClick={resetarray}>New</button>
           <button onClick={()=>startsort()}>Sort</button>
           <button onClick={()=>handlestop()}>Stop</button>
-          {/* <button onClick={reverse}>Rev</button> */}
+          <button onClick={reverse}>Rev</button>
           <select name="algos" className='algoselector2' onChange={(e)=>setAlgo2(e.target.value)} id="">
             <option value="Quicksort" >Quicksort</option>
             <option value="Mergesort" >Mergesort</option>
@@ -231,7 +243,7 @@ const Compare = () => {
           <h3>Algorithm 1: {algo}</h3>
               <p>Time Complexity: {timecomplex}</p>
               <p>Space Complexity: {spacecomplex}</p>
-              <p>Comparisons: {comparisons}</p>
+              <p>{algo === "Bongosort"? "Attempts" : "Comparisons"} : {comparisons}</p>
               <p>Swaps: {swaps}</p>
               <p>Execution Time:</p>
               <p>Stability: </p>
@@ -243,7 +255,7 @@ const Compare = () => {
         <h3>Algorithm 2: {algo2}</h3>
             <p>Time Complexity: {timecomplex1}</p>
             <p>Space Complexity: {spacecomplex1}</p>
-            <p>Comparisons:{comparisons1} </p>
+            <p>{algo2 === "Bongosort"? "Attempts" : "Comparisons"} : {comparisons1} </p>
             <p>Swaps:{swaps1} </p>
             <p>Execution Time:</p>
             <p>Stability: </p>
