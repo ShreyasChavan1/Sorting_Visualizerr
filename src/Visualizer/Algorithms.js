@@ -256,7 +256,6 @@ export const Selectionsort = async(mainarray,visualiseArray,setComparisons = ()=
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
-
 //insertionsort
 export const Insertionsort = async (mainarray, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
   setComparisons(0);
@@ -267,12 +266,10 @@ export const Insertionsort = async (mainarray, visualiseArray, setComparisons = 
     let key = mainarray[i];
     let j = i - 1;
 
-    
-
     while (j >= 0 && mainarray[j] > key) {
-      setComparisons(prev => prev + 1); // Count each comparison inside while
+      setComparisons(prev => prev + 1); 
       mainarray[j + 1] = mainarray[j];
-      setSwaps(prev => prev + 1); // Count swaps
+      setSwaps(prev => prev + 1); 
       await visualiseArray(j + 1, mainarray[j + 1], j, mainarray[j], true);
       j--;
     }
@@ -501,12 +498,12 @@ export const Radixsort = async (arr, visualiseArray, setComparisons = () => {}, 
     let bucket = Array.from({ length: 10 }, () => []);
     for (let j = 0; j < arr.length; j++) {
       bucket[getpos(arr[j], i)].push(arr[j]);
-      setComparisons(prev => prev + 1); // Increment comparisons
+      setComparisons(prev => prev + 1); 
       await visualiseArray(j, arr[j], null, null, true);
     }
 
     arr = [].concat(...bucket);
-    setSwaps(prev => prev + n); // Approximate swaps as the array is reconstructed
+    setSwaps(prev => prev + n); 
 
     for (let k = 0; k < arr.length; k++) {
       await visualiseArray(k, arr[k], null, null, false);

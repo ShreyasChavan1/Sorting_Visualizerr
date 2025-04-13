@@ -46,13 +46,18 @@ const Visualiser = () => {
         return;
       }
       setTimeout(() => {
+        if (stopRef.current) {
+          resolve();
+          return;
+        }
         setArray((prevArray) => {
           const newArray = [...prevArray];
           if (value !== undefined) newArray[index] = value;
           if (value2 !== undefined && index2 !== undefined) newArray[index2] = value2;
-
           const newColors = newArray.map((_, i) =>
-            i === index || i === index2 ? (isComparing ? "red" : "green") : "default"
+            i === index || i === index2
+              ? isComparing ? "red" : "green"
+              : "default"
           );
           setColor(newColors);
           return newArray;
@@ -61,7 +66,7 @@ const Visualiser = () => {
       }, sortingSpeed);
     });
   };
-
+  
   const startSorting = async () => {
     setSorting(true);
     stopRef.current = false;
@@ -120,17 +125,19 @@ const Visualiser = () => {
     }
 }`);
 
+const worker = new Worker(new URL('./customSortWorker.js', import.meta.url), { type: 'module' });
+
   const handleCustomSort = async () => {
     setCustomerror("");
     try {
       setSorting(true);
       stopRef.current = false;
-      const sortFunction = new Function("array", "visualize", `${customCode}; return customSort;`);
+      const sortFunction = new Function("array", "visualize", "stopRef", `${customCode}; return customSort;`);
       const sortingAlgo = sortFunction();
       if (typeof sortingAlgo !== "function") {
         throw new Error("Invalid sorting function");
       }
-      await sortingAlgo([...array], visualiseArray);
+      await sortingAlgo([...array], visualiseArray, stopRef);
       setSorting(false);
     } catch (error) {
       setSorting(false);

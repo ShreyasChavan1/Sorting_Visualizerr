@@ -31,6 +31,10 @@ const Compare = () => {
     const [comparisons1,setComparisons1] = useState(0);
     const [swaps1,setSwaps1] = useState(0);
 
+    const [execTime1, setExecTime1] = useState(0);
+const [execTime2, setExecTime2] = useState(0);
+
+
     const getData = async() =>{
       const userRef = collection(db,"Algo-Description");
       const q = query(userRef,where("Name","==",algo));
@@ -122,24 +126,42 @@ const Compare = () => {
       })
     }
 
-    const startsort = async() =>{
+    const startsort = async () => {
       setSorting(true);
       stopRef.current = false;
-      const promises = [];
+    
+      let execTime1 = 0;
+      let execTime2 = 0;
+    
       const sorting1 = Algorithms[algo];
       const sorting2 = Algorithms[algo2];
-      if(sorting1){
-       const promise1 = sorting1([...array],(index,value,index2,value2,isComparing,isSecond) => visualize(index,value,index2,value2,isComparing,false),setComparisons,setSwaps);
-       promises.push(promise1);
+    
+      const promises = [];
+    
+      if (sorting1) {
+        const t1 = performance.now();
+        const promise1 = sorting1([...array], (i, v, i2, v2, c, s) => visualize(i, v, i2, v2, c, false), setComparisons, setSwaps).then(() => {
+          const t2 = performance.now();
+          execTime1 = (t2 - t1).toFixed(2);
+          setExecTime1(execTime1); // Add this state to display
+        });
+        promises.push(promise1);
       }
-      if(sorting2){
-        const promise2 =  sorting2([...array],(index,value,index2,value2,isComparing,isSecond) => visualize(index,value,index2,value2,isComparing,true),setComparisons1,setSwaps1);
+    
+      if (sorting2) {
+        const t3 = performance.now();
+        const promise2 = sorting2([...array], (i, v, i2, v2, c, s) => visualize(i, v, i2, v2, c, true), setComparisons1, setSwaps1).then(() => {
+          const t4 = performance.now();
+          execTime2 = (t4 - t3).toFixed(2);
+          setExecTime2(execTime2); // Add this state too
+        });
         promises.push(promise2);
       }
+    
       await Promise.all(promises);
       setSorting(false);
-
-    }
+    };
+    
     const handlestop = () =>{
       stopRef.current = true;
       setSorting(false);
@@ -245,8 +267,7 @@ const Compare = () => {
               <p>Space Complexity: {spacecomplex}</p>
               <p>{algo === "Bongosort"? "Attempts" : "Comparisons"} : {comparisons}</p>
               <p>Swaps: {swaps}</p>
-              <p>Execution Time:</p>
-              <p>Stability: </p>
+              <p>Execution Time: {execTime1} ms</p>
           </div>
         </div>
         <div className="info-graph2">
@@ -257,8 +278,7 @@ const Compare = () => {
             <p>Space Complexity: {spacecomplex1}</p>
             <p>{algo2 === "Bongosort"? "Attempts" : "Comparisons"} : {comparisons1} </p>
             <p>Swaps:{swaps1} </p>
-            <p>Execution Time:</p>
-            <p>Stability: </p>
+            <p>Execution Time:{execTime2} ms</p>
           </div>
         </div>
       </div>
