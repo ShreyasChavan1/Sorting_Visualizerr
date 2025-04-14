@@ -9,6 +9,7 @@ import Description from "./description";
 import { useParams } from "react-router-dom";
 import { Editor } from "@monaco-editor/react";
 
+
 const Visualiser = () => {
   const [array, setArray] = useState([]);
   const [size, setSize] = useState(50);
@@ -93,7 +94,7 @@ const Visualiser = () => {
     setSorting(false);
   };
 
-  // Default custom sort example (Bubble Sort)
+
   const [customCode, setCustomCode] = useState(`
     /*
  * Custom Sorting Function Template
@@ -127,24 +128,46 @@ const Visualiser = () => {
 
 
 
-  const handleCustomSort = async () => {
-    setCustomerror("");
-    try {
-      setSorting(true);
-      stopRef.current = false;
-      const sortFunction = new Function("array", "visualize", "stopRef", `${customCode}; return customSort;`);
-      const sortingAlgo = sortFunction();
-      if (typeof sortingAlgo !== "function") {
-        throw new Error("Invalid sorting function");
-      }
-      await sortingAlgo([...array], visualiseArray, stopRef);
+
+const handleCustomSort = () => {
+  setCustomerror("");
+  setSorting(true);
+
+  const worker = new Worker(new URL('./customSortWorker.js', import.meta.url), {
+    type: 'module',
+  });
+
+  let timeoutId = setTimeout(() => {
+    worker.terminate();
+    setCustomerror("Sorting timed out. Possible infinite loop.");
+    setSorting(false);
+  }, 10000); 
+
+  worker.postMessage({
+    array: [...array],
+    code: customCode,
+  });
+
+  worker.onmessage = (e) => {
+    const { type, payload, error } = e.data;
+
+    if (type === "visualize") {
+      const { i, v, j, v2, isCompare } = payload;
+      visualiseArray(i, v, j, v2, isCompare);
+    } else if (type === "done") {
+      clearTimeout(timeoutId);
       setSorting(false);
-    } catch (error) {
+      worker.terminate();
+    } else if (type === "error") {
+      clearTimeout(timeoutId);
+      setCustomerror(error);
       setSorting(false);
-      console.error("Error executing custom sort:", error);
-      setCustomerror(error.message);
+      worker.terminate();
     }
   };
+};
+
+
 
   const containerWidth = 800;
   const barWidth = Math.max(Math.floor(containerWidth / array.length), 2);

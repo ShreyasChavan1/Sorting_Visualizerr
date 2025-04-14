@@ -143,7 +143,7 @@ const [execTime2, setExecTime2] = useState(0);
         const promise1 = sorting1([...array], (i, v, i2, v2, c, s) => visualize(i, v, i2, v2, c, false), setComparisons, setSwaps).then(() => {
           const t2 = performance.now();
           execTime1 = (t2 - t1).toFixed(2);
-          setExecTime1(execTime1); // Add this state to display
+          setExecTime1(execTime1); 
         });
         promises.push(promise1);
       }
@@ -153,7 +153,7 @@ const [execTime2, setExecTime2] = useState(0);
         const promise2 = sorting2([...array], (i, v, i2, v2, c, s) => visualize(i, v, i2, v2, c, true), setComparisons1, setSwaps1).then(() => {
           const t4 = performance.now();
           execTime2 = (t4 - t3).toFixed(2);
-          setExecTime2(execTime2); // Add this state too
+          setExecTime2(execTime2); 
         });
         promises.push(promise2);
       }
