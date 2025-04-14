@@ -125,7 +125,7 @@ const Visualiser = () => {
     }
 }`);
 
-const worker = new Worker(new URL('./customSortWorker.js', import.meta.url), { type: 'module' });
+
 
   const handleCustomSort = async () => {
     setCustomerror("");
