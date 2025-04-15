@@ -211,7 +211,7 @@ const handleCustomSort = () => {
               />
               <span>Time: {sortingSpeed}ms</span>
             </div>
-            <button className="btnn" disabled={sorting} onClick={startSorting}>Sort</button>
+            <button className="btnn" disabled={sorting || selectedAlgo === "Customsort"} onClick={startSorting}>Sort</button>
             <button className="btnn" onClick={toggleStop}>Stop</button>
             <button className="btnn" onClick={reverseArray} disabled={sorting}>Rev</button>
           </div>
@@ -233,6 +233,7 @@ const handleCustomSort = () => {
 
 
       {selectedAlgo === "Customsort" ? (
+        
         <div className="cu">
           <Editor
             height="500px"
