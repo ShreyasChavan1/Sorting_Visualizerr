@@ -111,14 +111,14 @@ const quick = async (mainarray, low, high, visualiseArray, incrementComparison, 
       await visualiseArray(i, mainarray[i], j, mainarray[j], true);
       if (i < j) {
           [mainarray[i], mainarray[j]] = [mainarray[j], mainarray[i]];
-          incSwaps();
+          incSwaps(prev => prev + 1);
           await visualiseArray(i, mainarray[i], j, mainarray[j], false);
       }
   }
 
 
   [mainarray[low], mainarray[j]] = [mainarray[j], mainarray[low]];
-  incSwaps();
+  incSwaps(prev => prev + 1);
   await visualiseArray(low, mainarray[low], j, mainarray[j], false);
 
   return j;

@@ -219,7 +219,7 @@ const [execTime2, setExecTime2] = useState(0);
           <button onClick={resetarray}>New</button>
           <button onClick={()=>startsort()}>Sort</button>
           <button onClick={()=>handlestop()}>Stop</button>
-          <button onClick={reverse}>Rev</button>
+          {/* <button onClick={reverse}>Rev</button> */}
           <select name="algos" className='algoselector2' onChange={(e)=>setAlgo2(e.target.value)} id="">
             <option value="Quicksort" >Quicksort</option>
             <option value="Mergesort" >Mergesort</option>
