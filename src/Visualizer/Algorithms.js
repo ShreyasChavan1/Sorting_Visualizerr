@@ -3,7 +3,7 @@
 export const Mergesort = async (array, visualiseArray, setComparisons = () => {}, setSwaps = () => {}) => {
   setComparisons(0);
   setSwaps(0);
-  const aux = [...array]; // Only once
+  const aux = [...array]; 
 
   await mergesortHelper(array, 0, array.length - 1, aux, visualiseArray,setComparisons,setSwaps);
 
@@ -478,7 +478,7 @@ export const Shellsort = async (arr, visualiseArray,setComparisons = ()=>{},setS
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
-//radix sort not so Ez !!!
+//radix  !!!
 const getmax = (arr, n) => {
   let max = 0;
   for (let i = 0; i < n; i++) {
@@ -520,7 +520,7 @@ export const Radixsort = async (arr, visualiseArray, setComparisons = () => {}, 
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
-//combsort kinda EZ ?
+//combsort  
 
 export const Combsort = async(arr,visualiseArray,setComparisons = ()=>{},setSwaps = () => {}) =>{
   setComparisons(0);
