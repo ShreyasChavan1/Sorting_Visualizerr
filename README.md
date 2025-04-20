@@ -19,8 +19,7 @@ An interactive web application that **visualizes sorting algorithms** with real-
 ## ⚙️ Technologies Used
 
 - **Frontend**: ReactJS, JavaScript, HTML, CSS
-- **Backend/Hosting**: Firebase
-- **Styling**: TailwindCSS / Bootstrap (if used)
+- **Backend/Hosting**: gh-pages
 
 ---
 
