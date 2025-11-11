@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizerr",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "homepage": "https://ShreyasChavan1.github.io/Sorting_Visualizerr"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
